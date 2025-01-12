@@ -1,9 +1,10 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f1f1f9;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #c7c7e4;
     color: #333;
     margin: 0;
     padding: 0;
+    height: 100vh;
     overflow-x: hidden;
 }
 
@@ -13,15 +14,25 @@ header {
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    animation: fadeIn 0.8s ease-out;
+}
+
+.pricing-header {
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+    animation: fadeInUp2 ease-in-out 5s infinite;
 }
 
 header h1 {
     font-size: 3.2em;
     color: #fff;
     margin: 0;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    transition: color 0.5s ease-in-out;
+}
+
+header h1:hover {
+    color: #a19cf9;
 }
 
 .container {
@@ -31,7 +42,7 @@ header h1 {
 }
 
 .description {
-    font-size: 1.4em;
+    font-size: 2em;
     color: #555;
     text-align: center;
     margin-bottom: 50px;
@@ -59,7 +70,7 @@ header h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.6s ease-out;
+    animation: fadeInUp 1s ease-out;
 }
 
 .pricing-card:hover {
@@ -88,11 +99,14 @@ header h1 {
     margin-bottom: 30px;
 }
 
+p.price {
+    font-size: 2rem;
+    padding: 10px;
+    margin: 0;
+}
+
 .price {
-    font-size: 3em;
-    color: #6a1ca7;
     font-weight: bold;
-    margin-top: auto;
     transition: color 0.3s ease;
 }
 
@@ -156,14 +170,14 @@ input[type="text"],
 input[type="file"],
 textarea,
 select {
-    width: 100%;
-    padding: 18px 20px;
+    min-width: 90%;
+    padding: 20px;
     margin-bottom: 25px;
     border-radius: 10px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     color: #000000;
-    font-size: 1.1em;
+    font-size: 1.3em;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -214,25 +228,18 @@ input[type="file"]:hover {
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    background-color: #832ac7;
+    background-color: rgb(45, 155, 54);
     color: white;
     padding: 12px 25px;
+    margin-right: 10px;
     border-radius: 10px;
-    transition: background-color 0.2s ease;
+    border: none;
+    transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
 input[type="file"]::-webkit-file-upload-button:hover {
-    background-color: #a15dd6;
-}
-
-footer {
-    background-color: #6a1ca7;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    margin-top: 60px;
-    font-size: 1.1em;
+    background-color: #31d647;
 }
 
 .order-now-btn {
@@ -249,6 +256,75 @@ footer {
 
 .order-now-btn:hover {
     background-color: #8a4fff;
+}
+
+.social-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.social-footer h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links li {
+    display: inline-block;
+}
+
+.social-icon {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-align: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+}
+
+.social-icon i {
+    font-size: 1.5em;
+}
+
+.youtube {
+    background-color: #c31f1f;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.twitter {
+    background-color: #3fa3e1;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.instagram {
+    background-color: #d76ed0;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.social-icon:hover {
+    opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -272,5 +348,41 @@ footer {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp2 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }

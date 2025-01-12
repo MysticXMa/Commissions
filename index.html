@@ -4,23 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRChat Avatar Commissions</title>
+    <title>Main</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>VRChat Avatar Commissions</h1>
+        <h1>Mystic's VRChat Avatar Commissions</h1>
     </header>
 
     <div class="container">
-        <p class="description">Welcome to our VRChat Avatar Commission service! Whether you need a simple design or a
-            highly detailed, custom avatar, we offer three flexible pricing tiers to suit your needs. Select a tier, and
-            let's bring your vision to life with personalized designs tailored specifically for your VRChat experience.
+        <p class="description">
+            Hi, I'm Mystic, an experienced avatar creator! Have you ever dreamed of a custom furry avatar that perfectly
+            matches your personality?
+            Choose from Tier 1, Tier 2, or Tier 3 to start your journey toward your ideal avatar today!
+        </p>
+        <br>
+        <p class="description">
+            <b>Important: I accept payments only through Cash App, Donation Alerts, or PayPal.</b>
         </p>
 
         <section>
-            <h2 class="pricing-header">Choose Your Pricing Tier</h2>
+            <h2 class="pricing-header">- Choose Your Pricing Tier -</h2>
+            <br>
             <div class="pricing">
                 <div class="pricing-card">
                     <h2>Basic Avatar</h2>
@@ -29,27 +35,24 @@
                         <li>1-2 days delivery time</li>
                         <li>Avatar retexture (Audiolink included if required)</li>
                     </ul>
-
-                    <div class="pricing-bottom">
-                        <p class="price">5€</p>
-                        <a href="#" class="order-now-btn" onclick="openForm('Basic Avatar')">Order Now</a>
-                    </div>
+                    <br><br><br><br><br>
+                    <p class="price">5€</p>
+                    <a href="#" class="order-now-btn" onclick="openForm('Basic Avatar')">Order Now</a>
                 </div>
                 <div class="pricing-card">
-                    <h2>Intermediate Avatar</h2>
+                    <h2>Intermediate Avatar <i style="color: green; font-weight: normal;">(Recommended)</i></h2>
                     <p>This tier provides more customization with additional features for a personalized avatar.</p>
                     <ul>
                         <li>2-4 days delivery time</li>
                         <li>Avatar retexture (Audiolink included if required)</li>
                         <li>Customized clothing (with texture rework if necessary)</li>
                     </ul>
-                    <div class="pricing-bottom">
-                        <p class="price">15€</p>
-                        <a href="#" class="order-now-btn" onclick="openForm('Intermediate Avatar')">Order Now</a>
-                    </div>
+
+                    <p class="price">15€</p>
+                    <a href="#" class="order-now-btn" onclick="openForm('Intermediate Avatar')">Order Now</a>
                 </div>
                 <div class="pricing-card">
-                    <h2>Advanced Avatar</h2>
+                    <h2>Advanced Avatar +</h2>
                     <p>For the most complex avatars with intricate details, effects, and unique customization.</p>
                     <ul>
                         <li>5+ days delivery time</li>
@@ -58,10 +61,8 @@
                         <li>Additional features upon request</li>
                     </ul>
 
-                    <div class="pricing-bottom">
-                        <p class="price">30€</p>
-                        <a href="#" class="order-now-btn" onclick="openForm('Advanced Avatar')">Order Now</a>
-                    </div>
+                    <p class="price">30€+</p>
+                    <a href="#" class="order-now-btn" onclick="openForm('Advanced Avatar')">Order Now</a>
                 </div>
             </div>
         </section>
@@ -70,46 +71,62 @@
             <h2 id="form-title">Order Form</h2>
             <form id="order-form" onsubmit="submitForm(event)">
                 <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" minlength="4" required
+                    placeholder="Enter at least 4 characters">
 
                 <label for="description">Avatar Description:</label>
-                <textarea id="description" name="description" rows="4" required></textarea>
+                <textarea id="description" name="description" rows="4" minlength="30" maxlength="200" required
+                    placeholder="Description (30-200 characters)"></textarea>
 
                 <label for="style">Avatar Base:</label>
-                <select id="style" name="style" required onchange="toggleClothingOptions()">
+                <select id="style" name="style" required>
                     <option value="regulus">Regulus</option>
                     <option value="novabeast">Novabeast</option>
                     <option value="nardodragon">Nardodragon</option>
                     <option value="protogen">Protogen</option>
+                    <option value="mayu">Mayu</option>
+                    <option value="rexouium">Rexouium</option>
+                    <option value="taidum">Taidum</option>
                 </select>
 
                 <div id="clothing-options" class="hidden">
-                    <label for="clothing">Clothing Options <b>(Keep None if you select 5€):</b></label>
+                    <label for="clothing">Clothing Amount <b>(Keep None if you select 5€):</b></label>
                     <select id="clothing" name="clothing">
                         <option value="none">None</option>
-                        <option value="t-shirt">T-Shirt</option>
-                        <option value="suit">Suit</option>
-                        <option value="dress">Dress</option>
-                        <option value="armor">Armor</option>
+                        <option value="two">2 Clothes</option>
+                        <option value="five">3 Clothes</option>
+                        <option value="seven">4 Clothes</option>
+                        <option value="seven+">5+ Clothes</option>
                     </select>
                 </div>
 
                 <label for="file">Upload Reference Image (optional):</label>
                 <input type="file" id="file" name="file" accept="image/*">
 
-                <label for="discord-id">Discord ID:</label>
-                <input type="text" id="discord-id" name="discord-id" required placeholder="Your Discord ID">
+                <label for="discord-id">Discord Name:</label>
+                <input type="text" id="discord-id" name="discord-id" minlength="3" required
+                    placeholder="Your Discord Name (at least 3 characters)">
 
                 <input type="hidden" id="selected-pack" name="pack">
 
                 <button type="submit" class="button">Submit Order</button>
             </form>
-        </div>
+        </div><br><br>
+        <hr>
+        <footer class="social-footer">
+            <h3>Follow Me On:</h3>
+            <p>
+            <ul class="social-links">
+                <li><a href="https://www.youtube.com/@MysticXMac" target="_blank" class="social-icon youtube">
+                        <i class="fab fa-youtube"></i>YouTube</a></li>
+                <li><a href="https://x.com/MysticXMac" target="_blank" class="social-icon twitter">
+                        <i class="fab fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.instagram.com/mysti_cxmac/" w target="_blank" class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>Instagram</a></li>
+            </ul>
+            </p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2025 VRChat Avatar Commissions. All rights reserved.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
