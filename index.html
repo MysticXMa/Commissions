@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRChat Avatar Commissions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>VRChat Avatar Commissions</h1>
+    </header>
+
+    <div class="container">
+        <p class="description">Welcome to our VRChat Avatar Commission service! Whether you need a simple design or a
+            highly detailed, custom avatar, we offer three flexible pricing tiers to suit your needs. Select a tier, and
+            let's bring your vision to life with personalized designs tailored specifically for your VRChat experience.
+        </p>
+
+        <section>
+            <h2 class="pricing-header">Choose Your Pricing Tier</h2>
+            <div class="pricing">
+                <div class="pricing-card">
+                    <h2>Basic Avatar</h2>
+                    <p>This is a great option for simple and quick designs that still capture your personality.</p>
+                    <ul>
+                        <li>1-2 days delivery time</li>
+                        <li>Avatar retexture (Audiolink included if required)</li>
+                    </ul>
+
+                    <div class="pricing-bottom">
+                        <p class="price">5€</p>
+                        <a href="#" class="order-now-btn" onclick="openForm('Basic Avatar')">Order Now</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <h2>Intermediate Avatar</h2>
+                    <p>This tier provides more customization with additional features for a personalized avatar.</p>
+                    <ul>
+                        <li>2-4 days delivery time</li>
+                        <li>Avatar retexture (Audiolink included if required)</li>
+                        <li>Customized clothing (with texture rework if necessary)</li>
+                    </ul>
+                    <div class="pricing-bottom">
+                        <p class="price">15€</p>
+                        <a href="#" class="order-now-btn" onclick="openForm('Intermediate Avatar')">Order Now</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <h2>Advanced Avatar</h2>
+                    <p>For the most complex avatars with intricate details, effects, and unique customization.</p>
+                    <ul>
+                        <li>5+ days delivery time</li>
+                        <li>Avatar retexture (including Audiolink and custom effects if required)</li>
+                        <li>Customized clothing (with texture rework if necessary)</li>
+                        <li>Additional features upon request</li>
+                    </ul>
+
+                    <div class="pricing-bottom">
+                        <p class="price">30€</p>
+                        <a href="#" class="order-now-btn" onclick="openForm('Advanced Avatar')">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="form-container" style="display: none;">
+            <h2 id="form-title">Order Form</h2>
+            <form id="order-form" onsubmit="submitForm(event)">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="description">Avatar Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <label for="style">Avatar Base:</label>
+                <select id="style" name="style" required onchange="toggleClothingOptions()">
+                    <option value="regulus">Regulus</option>
+                    <option value="novabeast">Novabeast</option>
+                    <option value="nardodragon">Nardodragon</option>
+                    <option value="protogen">Protogen</option>
+                </select>
+
+                <div id="clothing-options" class="hidden">
+                    <label for="clothing">Clothing Options <b>(Keep None if you select 5€):</b></label>
+                    <select id="clothing" name="clothing">
+                        <option value="none">None</option>
+                        <option value="t-shirt">T-Shirt</option>
+                        <option value="suit">Suit</option>
+                        <option value="dress">Dress</option>
+                        <option value="armor">Armor</option>
+                    </select>
+                </div>
+
+                <label for="file">Upload Reference Image (optional):</label>
+                <input type="file" id="file" name="file" accept="image/*">
+
+                <label for="discord-id">Discord ID:</label>
+                <input type="text" id="discord-id" name="discord-id" required placeholder="Your Discord ID">
+
+                <input type="hidden" id="selected-pack" name="pack">
+
+                <button type="submit" class="button">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 VRChat Avatar Commissions. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
