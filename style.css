@@ -389,7 +389,6 @@ hr {
     }
 }
 
-/* Responsive Styles for Tablets */
 @media (max-width: 1024px) {
     .container {
         padding: 40px;
@@ -449,7 +448,6 @@ hr {
     }
 }
 
-/* Responsive Styles for Phones */
 @media (max-width: 768px) {
     header {
         padding: 20px;
