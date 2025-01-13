@@ -59,7 +59,7 @@ header h1:hover {
 }
 
 .pricing-card {
-    background: linear-gradient(145deg, #e0e0e0, #ffffff, #e0e0e0);
+    background: linear-gradient(145deg, #d5d5d5, #ffffff, #d5d5d5);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
@@ -80,7 +80,6 @@ header h1:hover {
 
 .pricing-card h2 {
     font-size: 2.5em;
-    color: #b75aff;
     font-weight: 600;
     margin: 0;
     margin-bottom: 10px;
@@ -116,7 +115,6 @@ p.price {
 
 .pricing-card .details-btn {
     display: inline-block;
-    background-color: #6a1ca7;
     color: white;
     padding: 12px 30px;
     border-radius: 8px;
@@ -244,7 +242,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
 .order-now-btn {
     display: inline-block;
-    background-color: #6a1ca7;
     color: white;
     padding: 12px 25px;
     border-radius: 8px;
@@ -351,9 +348,14 @@ hr {
     box-shadow: 0 0 40px #f4d588;
 }
 
+.pricing-card.ultimate-pack>h2 {
+    color: #2f61a2;
+    text-shadow: none;
+}
+
 .pricing-card h2 {
     font-size: 2.6em;
-    color: #004b8d;
+    color: #858585;
     font-weight: 900;
     margin: 0;
     margin-bottom: 15px;
@@ -383,7 +385,7 @@ hr {
 
 .pricing-card .price {
     font-size: 3.2rem;
-    color: #3498db;
+    color: #b0b0b0;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -395,9 +397,18 @@ hr {
     color: #d4af37;
 }
 
+.pricing-card.ultimate-pack>.price {
+    color: #3fa3e1;
+}
+
+.pricing-card.ultimate-pack>.price:hover {
+    background: #dff7ff;
+    box-shadow: 0 0 35px rgba(156, 212, 255, 0.7);
+}
+
 .pricing-card .price:hover {
-    background: #e5f5ff;
-    box-shadow: 0 0 35px rgba(0, 200, 255, 0.7);
+    background: #f5f5f5;
+    box-shadow: 0 0 35px rgba(188, 188, 188, 0.7);
 }
 
 .pricing-card.gold-pack .price:hover {
@@ -407,8 +418,8 @@ hr {
 
 .pricing-card .order-now-btn {
     display: inline-block;
-    background-color: #66b3ff;
     color: white;
+    background-color: #bbbbbb;
     padding: 18px 36px;
     border-radius: 10px;
     font-size: 1.4em;
@@ -420,24 +431,28 @@ hr {
     letter-spacing: 1.5px;
 }
 
+.pricing-card.ultimate-pack>a {
+    background-color: #66b3ff;
+}
+
+.pricing-card.ultimate-pack>a:hover {
+    background-color: #3781ca;
+}
+
 .pricing-card.gold-pack .order-now-btn {
     background-color: #f1c232;
 }
 
 .pricing-card .order-now-btn:hover {
-    background-color: #4f8ecb;
+    background-color: #9b9b9b;
     transform: scale(1.1);
-    box-shadow: 0 0 35px rgba(106, 28, 167, 0.3);
 }
 
 .pricing-card.gold-pack .order-now-btn:hover {
     background-color: #d1a31f;
-    transform: scale(1.1);
-    box-shadow: 0 0 35px rgba(255, 223, 0, 0.4);
 }
 
 .pricing-card .order-now-btn:active {
-    transform: scale(1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
