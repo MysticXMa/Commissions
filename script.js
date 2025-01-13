@@ -37,8 +37,8 @@ function submitForm(event) {
 
     const urlPattern = /(https?:\/\/[^\s]+)/g;
     const containsURL = urlPattern.test(description);
-
     const containsCurseWord = curseWords.some(curse => description.toLowerCase().includes(curse));
+    const containsAtSymbol = description.includes('@');
 
     if (containsURL) {
         alert('URLs are not allowed in the description.');
@@ -50,22 +50,25 @@ function submitForm(event) {
         return;
     }
 
+    if (containsAtSymbol) {
+        alert('The "@" symbol is not allowed in the description.');
+        return;
+    }
+
     const message = {
-        username: 'Order Bot',
-        embeds: [
-            {
-                title: 'New Order Submission',
-                color: 3447003,
-                fields: [
-                    { name: 'Name', value: formData.get('name') || 'N/A' },
-                    { name: 'Avatar Description', value: description || 'N/A' },
-                    { name: 'Avatar Base', value: formData.get('style') || 'N/A' },
-                    { name: 'Clothing Options', value: formData.get('clothing') || 'None' },
-                    { name: 'Discord ID', value: formData.get('discord-id') || 'N/A' },
-                ],
-                timestamp: new Date().toISOString(),
-            },
-        ],
+        username: 'Commissions Bot',
+        embeds: [{
+            title: 'New Order Submission',
+            color: 3447003,
+            fields: [
+                { name: 'Name', value: formData.get('name') || 'N/A' },
+                { name: 'Avatar Description', value: description || 'N/A' },
+                { name: 'Avatar Base', value: formData.get('style') || 'N/A' },
+                { name: 'Clothing Options', value: formData.get('clothing') || 'None' },
+                { name: 'Discord ID', value: formData.get('discord-id') || 'N/A' },
+            ],
+            timestamp: new Date().toISOString(),
+        }],
     };
 
     const file = formData.get('file');
