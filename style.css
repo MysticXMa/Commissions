@@ -1,3 +1,8 @@
+* {
+
+    scrollbar-width: none;
+}
+
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #ececec;
@@ -116,7 +121,7 @@ p.price {
 }
 
 .price:hover {
-    color: #8a4fff;
+    color: #4fa1ff;
 }
 
 .pricing-card .details-btn {
@@ -131,12 +136,12 @@ p.price {
 }
 
 .pricing-card .details-btn:hover {
-    background-color: #8a4fff;
+    background-color: #4f9eff;
     transform: scale(1.05);
 }
 
 .button {
-    background-color: #6a1ca7;
+    background-color: #1c56a7;
     color: white;
     padding: 15px 30px;
     border: none;
@@ -147,7 +152,7 @@ p.price {
 }
 
 .button:hover {
-    background-color: #8a4fff;
+    background-color: #4fb9ff;
     transform: scale(1.05);
 }
 
@@ -165,7 +170,7 @@ p.price {
 
 #form-title {
     font-size: 2.8em;
-    color: #6a1ca7;
+    color: #1c5fa7;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -189,7 +194,7 @@ input[type="text"]:focus,
 input[type="file"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #6a1ca7;
+    border-color: #1c79a7;
     background-color: #fff;
     box-shadow: 0 0 8px rgba(106, 28, 167, 0.3);
 }
@@ -202,7 +207,7 @@ label {
 }
 
 button[type="submit"] {
-    background-color: #6a1ca7;
+    background-color: #1c51a7;
     color: white;
     padding: 16px 30px;
     border-radius: 10px;
@@ -214,7 +219,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #8a4fff;
+    background-color: #4fa1ff;
 }
 
 input[type="file"] {
@@ -228,7 +233,7 @@ input[type="file"] {
 }
 
 input[type="file"]:hover {
-    border-color: #6a1ca7;
+    border-color: #1c74a7;
 }
 
 input[type="file"]::-webkit-file-upload-button {
@@ -315,7 +320,7 @@ hr {
 }
 
 .instagram {
-    background-color: #d76ed0;
+    background-color: #d76ea6;
     opacity: 0.6;
     transition: opacity 0.25s ease-in-out, padding 0.25s ease;
 }
@@ -331,16 +336,17 @@ hr {
 .pricing-card.gold-pack {
     position: relative;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .pricing-card.ultimate-pack {
     background: linear-gradient(145deg, #77b4f6, #91dcff, #77b4f6);
+    text-shadow: 0px 0px 8px rgba(82, 215, 255, 0.6);
 }
 
 .pricing-card.gold-pack {
     background: linear-gradient(145deg, #f8d98b, #ffeda3, #f8d98b);
+    text-shadow: 0px 0px 8px rgba(255, 249, 78, 0.6);
 }
 
 @keyframes backgroundMove {
@@ -363,7 +369,7 @@ hr {
 
 .pricing-card.ultimate-pack>h2 {
     color: #2f61a2;
-    text-shadow: none;
+    text-shadow: 0 0 10px #7bcff1;
 }
 
 .pricing-card h2 {
@@ -374,11 +380,11 @@ hr {
     margin-bottom: 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
 }
 
 .pricing-card.gold-pack h2 {
     color: #4e4b31;
+    text-shadow: 0px 0px 8px rgba(255, 249, 131, 0.6);
 }
 
 .pricing-card p {
