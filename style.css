@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #c7c7e4;
+    background-color: #ececec;
     color: #333;
     margin: 0;
     padding: 0;
@@ -62,7 +62,7 @@ header h1:hover {
     background: linear-gradient(145deg, #ffffff, #f5f5f5);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 320px;
     display: flex;
@@ -75,8 +75,8 @@ header h1:hover {
 }
 
 .pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0px 40px rgba(179, 0, 255, 0.3)
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 0px 40px rgba(203, 82, 255, 0.8);
 }
 
 .pricing-card h2 {
