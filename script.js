@@ -37,7 +37,10 @@ function submitForm(event) {
 
     const urlPattern = /(https?:\/\/[^\s]+)/g;
     const containsURL = urlPattern.test(description);
-    const containsCurseWord = curseWords.some(curse => description.toLowerCase().includes(curse));
+    const containsCurseWord = curseWords.some(curse => {
+        const regex = new RegExp(`\\b${curse}\\b`, 'i');
+        return regex.test(description);
+    });
     const containsAtSymbol = description.includes('@');
 
     if (containsURL) {
