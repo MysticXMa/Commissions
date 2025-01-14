@@ -100,7 +100,7 @@ function submitForm(event) {
         embeds: [
             {
                 title: `New Order Submission`,
-                color: 7506394,
+                color: 15844367,
                 fields: [
                     { name: 'Name', value: name || 'N/A', inline: true },
                     { name: 'Discord ID', value: discordId || 'N/A', inline: true },
