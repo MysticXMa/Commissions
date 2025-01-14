@@ -1,10 +1,27 @@
 function openForm(tier) {
     document.getElementById('form-title').innerText = `Order Form for ${tier}`;
     document.getElementById('selected-pack').value = tier;
-    document.querySelector('.form-container').style.display = 'block';
+
+    const formContainer = document.querySelector('.form-container');
+    formContainer.style.display = 'block';
+
+    switch (tier) {
+        case 'Starter Pack':
+            formContainer.style.boxShadow = '0 0 30px rgba(177, 177, 177, 0.7)';
+            break;
+        case 'Premium Pack':
+            formContainer.style.boxShadow = '0 0 30px rgba(255, 225, 55, 0.6)';
+            break;
+        case 'Ultimate Pack':
+            formContainer.style.boxShadow = '0 0 30px rgba(66, 187, 214, 0.7)';
+            break;
+        default:
+            formContainer.style.boxShadow = '0 0 30px rgba(0, 0, 0, 0.1)';
+            break;
+    }
 
     window.scrollTo({
-        top: document.querySelector('.form-container').offsetTop,
+        top: formContainer.offsetTop,
         behavior: 'smooth'
     });
 }
@@ -17,6 +34,11 @@ function submitForm(event) {
     const form = document.getElementById('order-form');
     const formData = new FormData(form);
     const description = formData.get('description');
+    const selectedPack = formData.get('pack');
+    const name = formData.get('name');
+    const style = formData.get('style');
+    const clothing = formData.get('clothing') || 'None';
+    const discordId = formData.get('discord-id');
 
     const curseWords = [
         "shit", "fuck", "bitch", "asshole", "damn", "hell", "bastard", "slut", "whore",
@@ -60,38 +82,43 @@ function submitForm(event) {
 
     const message = {
         username: 'Commissions Bot',
-        embeds: [{
-            title: 'New Order Submission',
-            color: 3447003,
-            fields: [
-                { name: 'Name', value: formData.get('name') || 'N/A' },
-                { name: 'Avatar Description', value: description || 'N/A' },
-                { name: 'Avatar Base', value: formData.get('style') || 'N/A' },
-                { name: 'Clothing Options', value: formData.get('clothing') || 'None' },
-                { name: 'Discord ID', value: formData.get('discord-id') || 'N/A' },
-            ],
-            timestamp: new Date().toISOString(),
-        }],
+        embeds: [
+            {
+                title: `New Order Submission: ${selectedPack}`,
+                color: 7506394,
+                fields: [
+                    { name: 'Name', value: name || 'N/A', inline: true },
+                    { name: 'Discord ID', value: discordId || 'N/A', inline: true },
+                    { name: 'Avatar Base', value: style || 'N/A', inline: true },
+                    { name: 'Clothing Options', value: clothing || 'None', inline: true },
+                    { name: 'Selected Pack', value: selectedPack || 'N/A', inline: true },
+                    { name: 'Description', value: description || 'N/A' }
+                ],
+                footer: {
+                    text: 'Mystic VRChat Avatar Commissions',
+                    icon_url: 'https://example.com/logo.png'
+                },
+                timestamp: new Date().toISOString(),
+            }
+        ],
     };
 
     const file = formData.get('file');
-    console.log('File:', file);
 
     if (file && file.size > 0) {
         const reader = new FileReader();
         reader.onload = () => {
-            const fileData = reader.result.split(',')[1];
             const fileType = file.type.split('/')[1];
-            console.log('File Type:', fileType);
 
-            if (fileType === 'png' || fileType === 'jpeg' || fileType === 'jpg') {
-                message.embeds[0].image = { url: 'attachment://image.' + fileType };
-                console.log('Image attachment URL:', message.embeds[0].image.url);
-
-                sendMessageToDiscord(message, file);
+            if (['png', 'jpeg', 'jpg'].includes(fileType)) {
+                message.embeds[0].image = { url: 'attachment://reference.' + fileType };
+                message.embeds[0].fields.push({
+                    name: 'Reference Image',
+                    value: 'Attached below.',
+                });
+                sendMessageToDiscord(message, file, `reference.${fileType}`);
             } else {
                 alert('Unsupported file type. Please upload a PNG or JPEG image.');
-                console.error('Unsupported file type:', fileType);
             }
         };
         reader.readAsDataURL(file);
@@ -100,12 +127,12 @@ function submitForm(event) {
     }
 }
 
-function sendMessageToDiscord(message, file = null) {
+function sendMessageToDiscord(message, file = null, filename = null) {
     const formData = new FormData();
     formData.append('payload_json', JSON.stringify(message));
 
-    if (file) {
-        formData.append('file', file);
+    if (file && filename) {
+        formData.append('file', file, filename);
     }
 
     fetch(WEBHOOK_URL, {
