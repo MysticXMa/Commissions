@@ -110,7 +110,7 @@ function submitForm(event) {
                     { name: 'Description', value: description || 'N/A' }
                 ],
                 footer: {
-                    text: 'Mystic VRChat Avatar Commissions',
+                    text: "Mystic's VRChat Avatar Commissions",
                     icon_url: 'https://example.com/logo.png'
                 },
                 timestamp: new Date().toISOString(),
