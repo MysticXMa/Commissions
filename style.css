@@ -339,12 +339,12 @@ hr {
 
 .pricing-card.ultimate-pack {
     background: linear-gradient(145deg, rgba(119, 180, 246, 0.7), rgba(145, 220, 255, 0.7), rgba(119, 180, 246, 0.7)),
-        radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 20%) 0 0;
-    background-size: 100px 100px;
-    background-position: center;
+        radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 100%) 0 0;
+    background-size: 30% 15%;
+    background-position: 0 0;
     background-repeat: repeat;
     background-attachment: fixed;
-    animation: bounceUpDown 10s infinite ease-in-out;
+    animation: bounceUpDown 10s infinite ease-in-out, moveBackground 30s linear infinite;
 }
 
 .pricing-card.gold-pack {
@@ -354,7 +354,7 @@ hr {
 
 @keyframes backgroundMove {
     0% {
-        background-position: 0% 0%;
+        background-position: 0 0;
     }
 
     100% {
@@ -490,6 +490,15 @@ hr {
     opacity: 0.4;
     z-index: 1;
     filter: brightness(1.6) contrast(1.4);
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 @keyframes bounceUpDown {
