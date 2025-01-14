@@ -78,15 +78,13 @@ header h1:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 1s ease, box-shadow 1s ease;
     position: relative;
-    overflow: hidden;
-    animation: fadeInUp 1s ease-out;
+    transition: transform 1s ease, box-shadow 1s ease;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 .pricing-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 0px 40px rgba(184, 184, 184, 0.8);
+    box-shadow: 0 0 40px rgba(184, 184, 184, 0.8);
 }
 
 .pricing-card h2 {
@@ -340,8 +338,13 @@ hr {
 }
 
 .pricing-card.ultimate-pack {
-    background: linear-gradient(145deg, #77b4f6, #91dcff, #77b4f6);
-    text-shadow: 0px 0px 8px rgba(82, 215, 255, 0.6);
+    background: linear-gradient(145deg, rgba(119, 180, 246, 0.7), rgba(145, 220, 255, 0.7), rgba(119, 180, 246, 0.7)),
+        radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 20%) 0 0;
+    background-size: 100px 100px;
+    background-position: center;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    animation: bounceUpDown 10s infinite ease-in-out;
 }
 
 .pricing-card.gold-pack {
@@ -488,6 +491,21 @@ hr {
     z-index: 1;
     filter: brightness(1.6) contrast(1.4);
 }
+
+@keyframes bounceUpDown {
+
+    0%,
+    50%,
+    100% {
+        transform: scale(1.05);
+    }
+
+    25%,
+    75% {
+        transform: scale(1);
+    }
+}
+
 
 @keyframes fadeIn {
     0% {
