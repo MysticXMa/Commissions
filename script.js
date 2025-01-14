@@ -7,16 +7,27 @@ function openForm(tier) {
 
     switch (tier) {
         case 'Starter Pack':
-            formContainer.style.boxShadow = '0 0 30px rgba(177, 177, 177, 0.7)';
+            formContainer.style.boxShadow = '0 4px 15px rgba(177, 177, 177, 0.8)';
+            formContainer.style.background = 'linear-gradient(to bottom, #ececec, #d1d1d1)';
+            formContainer.style.border = '2px solid #a6a6a6';
             break;
+
         case 'Premium Pack':
-            formContainer.style.boxShadow = '0 0 30px rgba(255, 225, 55, 0.6)';
+            formContainer.style.boxShadow = '0 4px 25px rgba(255, 192, 0, 0.9)';
+            formContainer.style.background = 'linear-gradient(to bottom, #fff5c1, #ffcc5c)';
+            formContainer.style.border = '2px solid #ff9f00';
             break;
+
         case 'Ultimate Pack':
-            formContainer.style.boxShadow = '0 0 30px rgba(66, 187, 214, 0.7)';
+            formContainer.style.boxShadow = '0 4px 45px rgba(66, 202, 255, 0.9)';
+            formContainer.style.background = 'linear-gradient(to bottom, #cce7ff, #66b8d8)';
+            formContainer.style.border = '3px solid #00a3d7';
             break;
+
         default:
-            formContainer.style.boxShadow = '0 0 30px rgba(0, 0, 0, 0.1)';
+            formContainer.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+            formContainer.style.background = '#f7f7f7';
+            formContainer.style.border = '1px solid #d0d0d0';
             break;
     }
 
@@ -59,7 +70,6 @@ function submitForm(event) {
 
     const urlPattern = /(https?:\/\/[^\s]+)/g;
 
-    // Check for URLs, curse words, and '@' in description
     if (urlPattern.test(description)) {
         alert('URLs are not allowed in the description.');
         return;
@@ -75,7 +85,6 @@ function submitForm(event) {
         return;
     }
 
-    // Check for curse words in name and Discord ID
     if (curseWords.some(curse => new RegExp(`\\b${curse}\\b`, 'i').test(name))) {
         alert('Please avoid using inappropriate language in the name.');
         return;
