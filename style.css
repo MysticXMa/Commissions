@@ -32,7 +32,6 @@ li,
     font-size: 2rem;
     font-weight: normal;
     text-align: center;
-    animation: fadeInUp2 ease-in-out 5s infinite;
 }
 
 header h1 {
@@ -536,20 +535,6 @@ hr {
 
     100% {
         opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp2 {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(20px);
-    }
-
-    100% {
         transform: translateY(0);
     }
 }
