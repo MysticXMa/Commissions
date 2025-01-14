@@ -9,19 +9,19 @@ function openForm(tier) {
         case 'Starter Pack':
             formContainer.style.boxShadow = '0 4px 15px rgba(177, 177, 177, 0.8)';
             formContainer.style.background = 'linear-gradient(to bottom, #ececec, #d1d1d1)';
-            formContainer.style.border = '2px solid #a6a6a6';
+            formContainer.style.border = '2px solid rgb(160, 160, 160)';
             break;
 
         case 'Premium Pack':
             formContainer.style.boxShadow = '0 4px 25px rgba(255, 192, 0, 0.9)';
             formContainer.style.background = 'linear-gradient(to bottom, #fff5c1, #ffcc5c)';
-            formContainer.style.border = '2px solid #ff9f00';
+            formContainer.style.border = '2px solid rgb(255, 214, 149)';
             break;
 
         case 'Ultimate Pack':
             formContainer.style.boxShadow = '0 4px 45px rgba(66, 202, 255, 0.9)';
             formContainer.style.background = 'linear-gradient(to bottom, #cce7ff, #66b8d8)';
-            formContainer.style.border = '3px solid #00a3d7';
+            formContainer.style.border = '3px solid rgb(170, 234, 255)';
             break;
 
         default:
@@ -99,7 +99,7 @@ function submitForm(event) {
         username: 'Commissions Bot',
         embeds: [
             {
-                title: `New Order Submission: ${selectedPack}`,
+                title: `New Order Submission`,
                 color: 7506394,
                 fields: [
                     { name: 'Name', value: name || 'N/A', inline: true },
