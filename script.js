@@ -58,25 +58,31 @@ function submitForm(event) {
     ];
 
     const urlPattern = /(https?:\/\/[^\s]+)/g;
-    const containsURL = urlPattern.test(description);
-    const containsCurseWord = curseWords.some(curse => {
-        const regex = new RegExp(`\\b${curse}\\b`, 'i');
-        return regex.test(description);
-    });
-    const containsAtSymbol = description.includes('@');
 
-    if (containsURL) {
+    // Check for URLs, curse words, and '@' in description
+    if (urlPattern.test(description)) {
         alert('URLs are not allowed in the description.');
         return;
     }
 
-    if (containsCurseWord) {
+    if (curseWords.some(curse => new RegExp(`\\b${curse}\\b`, 'i').test(description))) {
         alert('Please avoid using inappropriate language in the description.');
         return;
     }
 
-    if (containsAtSymbol) {
+    if (description.includes('@')) {
         alert('The "@" symbol is not allowed in the description.');
+        return;
+    }
+
+    // Check for curse words in name and Discord ID
+    if (curseWords.some(curse => new RegExp(`\\b${curse}\\b`, 'i').test(name))) {
+        alert('Please avoid using inappropriate language in the name.');
+        return;
+    }
+
+    if (curseWords.some(curse => new RegExp(`\\b${curse}\\b`, 'i').test(discordId))) {
+        alert('Please avoid using inappropriate language in the Discord ID.');
         return;
     }
 
