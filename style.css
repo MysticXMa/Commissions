@@ -1,758 +1,762 @@
 * {
-
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #ececec;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-x: hidden;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #ececec;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 header {
-    background-color: #4d93b1;
-    padding: 50px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgb(106, 181, 203, 0.5);
-    position: relative;
-    border-bottom: 10px solid #5db2cc;
+  background-color: #4d93b1;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgb(106, 181, 203, 0.5);
+  position: relative;
+  border-bottom: 10px solid #5db2cc;
 }
 
 ul,
 li,
-.pricing-card>p {
-    font-weight: bold;
+.pricing-card > p {
+  font-weight: bold;
 }
 
 .pricing-header {
-    font-size: 2rem;
-    font-weight: normal;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 header h1 {
-    font-size: 3.2em;
-    color: #fff;
-    margin: 0;
-    font-weight: normal;
-    transition: color 0.5s ease-in-out;
+  font-size: 3.2em;
+  color: #fff;
+  margin: 0;
+  font-weight: normal;
+  transition: color 0.5s ease-in-out;
 }
 
 header h1:hover {
-    color: #a19cf9;
+  color: #a19cf9;
 }
 
 .container {
-    padding: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .description {
-    font-size: 2em;
-    color: #555;
-    text-align: center;
-    margin-bottom: 50px;
-    line-height: 1.6;
+  font-size: 2em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 1.6;
 }
 
 .pricing {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 .pricing-card {
-    background: linear-gradient(145deg, #d5d5d5, #ffffff, #d5d5d5);
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    transition: transform 1s ease, box-shadow 1s ease;
-    animation: fadeInUp 1s ease-out forwards;
+  background: linear-gradient(145deg, #d5d5d5, #ffffff, #d5d5d5);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 1s ease, box-shadow 1s ease;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .pricing-card:hover {
-    box-shadow: 0 0 40px rgba(184, 184, 184, 0.8);
+  box-shadow: 0 0 40px rgba(184, 184, 184, 0.8);
 }
 
 .pricing-card h2 {
-    font-size: 2.5em;
-    font-weight: 600;
-    margin: 0;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
 .pricing-card p {
-    color: #777;
-    font-size: 1.2em;
-    margin-bottom: 20px;
+  color: #777;
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }
 
 .pricing-card ul {
-    text-align: left;
-    color: #666;
-    padding-left: 20px;
-    margin-bottom: 30px;
+  text-align: left;
+  color: #666;
+  padding-left: 20px;
+  margin-bottom: 30px;
 }
 
 p.price {
-    font-size: 2rem;
-    margin: 0;
+  font-size: 2rem;
+  margin: 0;
 }
 
 .price {
-    font-weight: bold;
-    transition: color 0.3s ease;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .price:hover {
-    color: #4fa1ff;
+  color: #4fa1ff;
 }
 
 .pricing-card .details-btn {
-    display: inline-block;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    transform: scale(1);
+  display: inline-block;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1);
 }
 
 .pricing-card .details-btn:hover {
-    background-color: #4f9eff;
-    transform: scale(1.05);
+  background-color: #4f9eff;
+  transform: scale(1.05);
 }
 
 .button {
-    background-color: #1c56a7;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #1c56a7;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
-    background-color: #4fb9ff;
-    transform: scale(1.05);
+  background-color: #4fb9ff;
+  transform: scale(1.05);
 }
 
 .form-container {
-    background: #fff;
-    padding: 50px;
-    border-radius: 12px;
-    margin-top: 60px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 0.8s ease-out;
+  background: #fff;
+  padding: 50px;
+  border-radius: 12px;
+  margin-top: 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.8s ease-out;
 }
 
 #form-title {
-    font-size: 2.8em;
-    color: #1c5fa7;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 2.8em;
+  color: #1c5fa7;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 input[type="text"],
 input[type="file"],
 textarea,
 select {
-    min-width: 90%;
-    padding: 20px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    color: #000000;
-    font-size: 1.3em;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
+  min-width: 90%;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #000000;
+  font-size: 1.3em;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="file"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #1c79a7;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(106, 28, 167, 0.3);
+  border-color: #1c79a7;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(106, 28, 167, 0.3);
 }
 
 label {
-    font-size: 1.2em;
-    color: #555;
-    margin-bottom: 10px;
-    display: block;
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 10px;
+  display: block;
 }
 
 button[type="submit"] {
-    background-color: #1c51a7;
-    color: white;
-    padding: 16px 30px;
-    border-radius: 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-    border: none;
-    width: 100%;
-    transition: background-color 0.3s ease;
+  background-color: #1c51a7;
+  color: white;
+  padding: 16px 30px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #4fa1ff;
+  background-color: #4fa1ff;
 }
 
 input[type="file"] {
-    background-color: #f9f9f9;
-    padding: 16px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    font-size: 1em;
-    transition: border 0.3s ease;
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 1em;
+  transition: border 0.3s ease;
 }
 
 input[type="file"]:hover {
-    border-color: #1c74a7;
+  border-color: #1c74a7;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    background-color: rgb(45, 155, 54);
-    color: white;
-    padding: 12px 25px;
-    margin-right: 10px;
-    border-radius: 10px;
-    border: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+  background-color: rgb(45, 155, 54);
+  color: white;
+  padding: 12px 25px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 input[type="file"]::-webkit-file-upload-button:hover {
-    background-color: #31d647;
+  background-color: #31d647;
 }
 
 .order-now-btn {
-    display: inline-block;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    text-decoration: none;
-    margin-top: 20px;
+  display: inline-block;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  text-decoration: none;
+  margin-top: 20px;
 }
 
 .social-footer {
-    text-align: center;
-    margin-top: 30px;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .social-footer h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .social-links {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-links li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .social-icon {
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 30px;
-    text-align: center;
-    gap: 8px;
-    transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-align: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
 }
 
 hr {
-    border: none;
-    height: 3px;
-    background-color: rgb(0, 0, 0);
+  border: none;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
 }
 
 .social-icon i {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 .youtube {
-    background-color: #c31f1f;
-    opacity: 0.6;
-    transition: opacity 0.25s ease-in-out, padding 0.25s ease;
+  background-color: #c31f1f;
+  opacity: 0.6;
+  transition: opacity 0.25s ease-in-out, padding 0.25s ease;
 }
 
 .twitter {
-    background-color: #3fa3e1;
-    opacity: 0.6;
-    transition: opacity 0.25s ease-in-out, padding 0.25s ease;
+  background-color: #3fa3e1;
+  opacity: 0.6;
+  transition: opacity 0.25s ease-in-out, padding 0.25s ease;
 }
 
 .instagram {
-    background-color: #d76ea6;
-    opacity: 0.6;
-    transition: opacity 0.25s ease-in-out, padding 0.25s ease;
+  background-color: #d76ea6;
+  opacity: 0.6;
+  transition: opacity 0.25s ease-in-out, padding 0.25s ease;
 }
 
 .instagram:hover,
 .youtube:hover,
 .twitter:hover {
-    opacity: 1;
-    padding: 10px 70px;
+  opacity: 1;
+  padding: 10px 70px;
 }
 
 .pricing-card.ultimate-pack,
 .pricing-card.gold-pack {
-    position: relative;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .pricing-card.ultimate-pack {
-    background: linear-gradient(145deg, rgba(119, 180, 246, 0.7), rgba(145, 220, 255, 0.7), rgba(119, 180, 246, 0.7)),
-        radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 100%) 0 0;
-    background-size: 30% 15%;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    animation: bounceUpDown 10s infinite ease-in-out, moveBackground 30s linear infinite;
+  background: linear-gradient(
+      145deg,
+      rgba(119, 180, 246, 0.7),
+      rgba(145, 220, 255, 0.7),
+      rgba(119, 180, 246, 0.7)
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 100%) 0 0;
+  background-size: 30% 15%;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  animation: bounceUpDown 10s infinite ease-in-out,
+    moveBackground 30s linear infinite;
 }
 
 .pricing-card.gold-pack {
-    background: linear-gradient(145deg, #f8d98b, #ffeda3, #f8d98b);
-    text-shadow: 0px 0px 8px rgba(255, 249, 78, 0.6);
+  background: linear-gradient(145deg, #f8d98b, #ffeda3, #f8d98b);
+  text-shadow: 0px 0px 8px rgba(255, 249, 78, 0.6);
 }
 
 @keyframes backgroundMove {
-    0% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
 
-    100% {
-        background-position: 100% 100%;
-    }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 .pricing-card.ultimate-pack:hover {
-    box-shadow: 0 0 60px #7ba1de, 0 0 20px #75b4f2;
+  box-shadow: 0 0 60px #7ba1de, 0 0 20px #75b4f2;
 }
 
 .pricing-card.gold-pack:hover {
-    box-shadow: 0 0 40px #ffdd85;
+  box-shadow: 0 0 40px #ffdd85;
 }
 
-.pricing-card.ultimate-pack>h2 {
-    color: #2f61a2;
-    text-shadow: 0 0 10px #7bcff1;
+.pricing-card.ultimate-pack > h2 {
+  color: #2f61a2;
+  text-shadow: 0 0 10px #7bcff1;
 }
 
 .pricing-card h2 {
-    font-size: 2.6em;
-    color: #858585;
-    font-weight: 900;
-    margin: 0;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  font-size: 2.6em;
+  color: #858585;
+  font-weight: 900;
+  margin: 0;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .pricing-card.gold-pack h2 {
-    color: #4e4b31;
-    text-shadow: 0px 0px 8px rgba(255, 249, 131, 0.6);
+  color: #4e4b31;
+  text-shadow: 0px 0px 8px rgba(255, 249, 131, 0.6);
 }
 
 .pricing-card p {
-    color: #333;
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
+  color: #333;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
 }
 
 .pricing-card ul {
-    text-align: left;
-    color: #444;
-    padding-left: 20px;
-    margin-bottom: 25px;
+  text-align: left;
+  color: #444;
+  padding-left: 20px;
+  margin-bottom: 25px;
 }
 
 .pricing-card .price {
-    font-size: 3.2rem;
-    color: #b0b0b0;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+  font-size: 3.2rem;
+  color: #b0b0b0;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pricing-card.gold-pack .price {
-    color: #d4af37;
+  color: #d4af37;
 }
 
-.pricing-card.ultimate-pack>.price {
-    color: #3fa3e1;
+.pricing-card.ultimate-pack > .price {
+  color: #3fa3e1;
 }
 
-.pricing-card.ultimate-pack>.price:hover {
-    background: #dff7ff;
-    box-shadow: 0 0 35px rgba(156, 212, 255, 0.7);
+.pricing-card.ultimate-pack > .price:hover {
+  background: #dff7ff;
+  box-shadow: 0 0 35px rgba(156, 212, 255, 0.7);
 }
 
 .pricing-card .price:hover {
-    background: #f5f5f5;
-    box-shadow: 0 0 35px rgba(188, 188, 188, 0.7);
+  background: #f5f5f5;
+  box-shadow: 0 0 35px rgba(188, 188, 188, 0.7);
 }
 
 .pricing-card.gold-pack .price:hover {
-    background: #f9f0c2;
-    box-shadow: 0 0 30px rgba(255, 223, 0, 0.6);
+  background: #f9f0c2;
+  box-shadow: 0 0 30px rgba(255, 223, 0, 0.6);
 }
 
 .pricing-card .order-now-btn {
-    display: inline-block;
-    color: white;
-    background-color: #bbbbbb;
-    padding: 18px 36px;
-    border-radius: 10px;
-    font-size: 1.4em;
-    text-decoration: none;
-    margin-top: 25px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+  display: inline-block;
+  color: white;
+  background-color: #bbbbbb;
+  padding: 18px 36px;
+  border-radius: 10px;
+  font-size: 1.4em;
+  text-decoration: none;
+  margin-top: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
-.pricing-card.ultimate-pack>a {
-    background-color: #66b3ff;
+.pricing-card.ultimate-pack > a {
+  background-color: #66b3ff;
 }
 
-.pricing-card.ultimate-pack>a:hover {
-    background-color: #3781ca;
+.pricing-card.ultimate-pack > a:hover {
+  background-color: #3781ca;
 }
 
 .pricing-card.gold-pack .order-now-btn {
-    background-color: #f1c232;
+  background-color: #f1c232;
 }
 
 .pricing-card .order-now-btn:hover {
-    background-color: #9b9b9b;
-    transform: scale(1.1);
+  background-color: #9b9b9b;
+  transform: scale(1.1);
 }
 
 .pricing-card.gold-pack .order-now-btn:hover {
-    background-color: #d1a31f;
+  background-color: #d1a31f;
 }
 
 .pricing-card .order-now-btn:active {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .pricing-card.ultimate-pack::before,
 .pricing-card.gold-pack::before {
-    content: "";
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    background-size: contain;
-    opacity: 0.4;
-    z-index: 1;
-    filter: brightness(1.6) contrast(1.4);
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  opacity: 0.4;
+  z-index: 1;
+  filter: brightness(1.6) contrast(1.4);
 }
 
 @keyframes moveBackground {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 @keyframes bounceUpDown {
+  0%,
+  50%,
+  100% {
+    transform: scale(1.02);
+  }
 
-    0%,
-    50%,
-    100% {
-        transform: scale(1.02);
-    }
-
-    25%,
-    75% {
-        transform: scale(1);
-    }
+  25%,
+  75% {
+    transform: scale(1);
+  }
 }
 
-
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes bounce {
-    0% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
 
-    25% {
-        transform: scale(1.1);
-    }
+  25% {
+    transform: scale(1.1);
+  }
 
-    50% {
-        transform: scale(1);
-    }
+  50% {
+    transform: scale(1);
+  }
 
-    75% {
-        transform: scale(1.1);
-    }
+  75% {
+    transform: scale(1.1);
+  }
 
-    100% {
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 1024px) {
-    .container {
-        padding: 40px;
-    }
+  .container {
+    padding: 40px;
+  }
 
-    header {
-        padding: 30px;
-    }
+  header {
+    padding: 30px;
+  }
 
-    header h1 {
-        font-size: 2.5em;
-    }
+  header h1 {
+    font-size: 2.5em;
+  }
 
-    .pricing {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+  .pricing {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
-    .pricing-card {
-        width: 80%;
-    }
+  .pricing-card {
+    width: 80%;
+  }
 
-    .description {
-        font-size: 1.5em;
-    }
+  .description {
+    font-size: 1.5em;
+  }
 
-    .form-container {
-        padding: 30px;
-    }
+  .form-container {
+    padding: 30px;
+  }
 
-    #form-title {
-        font-size: 2.2em;
-    }
+  #form-title {
+    font-size: 2.2em;
+  }
 
-    input[type="text"],
-    input[type="file"],
-    textarea,
-    select {
-        font-size: 1em;
-        padding: 15px;
-    }
+  input[type="text"],
+  input[type="file"],
+  textarea,
+  select {
+    font-size: 1em;
+    padding: 15px;
+  }
 
-    button[type="submit"],
-    .button {
-        font-size: 1em;
-        padding: 12px 20px;
-    }
+  button[type="submit"],
+  .button {
+    font-size: 1em;
+    padding: 12px 20px;
+  }
 
-    .social-footer h3 {
-        font-size: 1.3em;
-    }
+  .social-footer h3 {
+    font-size: 1.3em;
+  }
 
-    .social-icon {
-        font-size: 1em;
-        padding: 8px 15px;
-    }
+  .social-icon {
+    font-size: 1em;
+    padding: 8px 15px;
+  }
 }
 
 @media (max-width: 768px) {
-    header {
-        padding: 20px;
-    }
+  header {
+    padding: 20px;
+  }
 
-    header h1 {
-        font-size: 2em;
-    }
+  header h1 {
+    font-size: 2em;
+  }
 
-    .description {
-        font-size: 1.2em;
-        margin-bottom: 30px;
-    }
+  .description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
 
-    .pricing-card {
-        width: 90%;
-        padding: 20px;
-    }
+  .pricing-card {
+    width: 90%;
+    padding: 20px;
+  }
 
-    .pricing-card h2 {
-        font-size: 2em;
-    }
+  .pricing-card h2 {
+    font-size: 2em;
+  }
 
-    .pricing-card p,
-    ul {
-        font-size: 1em;
-    }
+  .pricing-card p,
+  ul {
+    font-size: 1em;
+  }
 
-    p.price {
-        font-size: 1.5rem;
-    }
+  p.price {
+    font-size: 1.5rem;
+  }
 
-    .form-container {
-        padding: 20px;
-    }
+  .form-container {
+    padding: 20px;
+  }
 
-    #form-title {
-        font-size: 1.8em;
-    }
+  #form-title {
+    font-size: 1.8em;
+  }
 
-    input[type="text"],
-    input[type="file"],
-    textarea,
-    select {
-        font-size: 0.9em;
-        padding: 10px;
-    }
+  input[type="text"],
+  input[type="file"],
+  textarea,
+  select {
+    font-size: 0.9em;
+    padding: 10px;
+  }
 
-    button[type="submit"],
-    .button {
-        font-size: 0.9em;
-        padding: 10px 15px;
-    }
+  button[type="submit"],
+  .button {
+    font-size: 0.9em;
+    padding: 10px 15px;
+  }
 
-    .social-footer h3 {
-        font-size: 1em;
-    }
+  .social-footer h3 {
+    font-size: 1em;
+  }
 
-    .social-icon {
-        font-size: 0.9em;
-        padding: 6px 10px;
-    }
+  .social-icon {
+    font-size: 0.9em;
+    padding: 6px 10px;
+  }
 }
 
 @media (max-width: 450px) {
-    header {
-        padding: 15px;
-    }
+  header {
+    padding: 15px;
+  }
 
-    header h1 {
-        font-size: 1.8em;
-    }
+  header h1 {
+    font-size: 1.8em;
+  }
 
-    .description {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-    }
+  .description {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
 
-    .pricing-card {
-        width: 100%;
-        padding: 15px;
-    }
+  .pricing-card {
+    width: 100%;
+    padding: 15px;
+  }
 
-    .pricing-card h2 {
-        font-size: 1.8em;
-    }
+  .pricing-card h2 {
+    font-size: 1.8em;
+  }
 
-    .pricing-card p,
-    ul {
-        font-size: 0.9em;
-    }
+  .pricing-card p,
+  ul {
+    font-size: 0.9em;
+  }
 
-    p.price {
-        font-size: 1.3rem;
-    }
+  p.price {
+    font-size: 1.3rem;
+  }
 
-    .form-container {
-        padding: 15px;
-    }
+  .form-container {
+    padding: 15px;
+  }
 
-    #form-title {
-        font-size: 1.6em;
-    }
+  #form-title {
+    font-size: 1.6em;
+  }
 
-    input[type="text"],
-    input[type="file"],
-    textarea,
-    select {
-        font-size: 0.8em;
-        padding: 8px;
-    }
+  input[type="text"],
+  input[type="file"],
+  textarea,
+  select {
+    font-size: 0.8em;
+    padding: 8px;
+  }
 
-    button[type="submit"],
-    .button {
-        font-size: 0.8em;
-        padding: 8px 12px;
-    }
+  button[type="submit"],
+  .button {
+    font-size: 0.8em;
+    padding: 8px 12px;
+  }
 
-    .social-footer h3 {
-        font-size: 0.9em;
-    }
+  .social-footer h3 {
+    font-size: 0.9em;
+  }
 
-    .social-icon {
-        font-size: 0.8em;
-        padding: 5px 8px;
-    }
+  .social-icon {
+    font-size: 0.8em;
+    padding: 5px 8px;
+  }
 
-    .order-now-btn {
-        font-size: 0.9em;
-        padding: 10px 18px;
-    }
+  .order-now-btn {
+    font-size: 0.9em;
+    padding: 10px 18px;
+  }
 
-    .social-footer {
-        margin-top: 20px;
-    }
+  .social-footer {
+    margin-top: 20px;
+  }
 }
