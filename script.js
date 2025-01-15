@@ -200,7 +200,7 @@ function submitForm(event) {
       new RegExp(`\\b${curse}\\b`, "i").test(discordId)
     )
   ) {
-    alert("Please avoid using inappropriate language in the Discord ID.");
+    alert("Please avoid using inappropriate language in the Discord Name.");
     return;
   }
 
