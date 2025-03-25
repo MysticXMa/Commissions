@@ -29,11 +29,12 @@ header h1 {
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
 }
 
 .back-button:hover {
   background-color: #5ac0c1;
+  transform: scale(1.05);
 }
 
 .gallery-container {
@@ -55,15 +56,17 @@ header h1 {
   padding: 15px;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   cursor: pointer;
   max-width: 250px;
   color: #ffffff;
+  position: relative;
 }
 
 .avatar-card img {
   width: 100%;
   border-radius: 8px;
+  transition: transform 0.4s ease-in-out;
 }
 
 .avatar-card p {
@@ -73,8 +76,12 @@ header h1 {
 }
 
 .avatar-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+}
+
+.avatar-card:hover img {
+  animation: tiltRotate 5s infinite ease-in-out;
 }
 
 .modal {
@@ -89,7 +96,7 @@ header h1 {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .modal.show {
@@ -105,11 +112,19 @@ header h1 {
   position: relative;
   box-shadow: 0 0px 20px rgba(131, 131, 131, 0.479);
   color: #ffffff;
+  animation: modalAppear 0.5s ease-out;
+  transform: scale(0.9);
+}
+
+.modal.show .modal-content {
+  animation: modalBounce 0.5s ease-out;
+  transform: scale(1);
 }
 
 .modal-content img {
   width: 100%;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .close {
@@ -119,8 +134,51 @@ header h1 {
   font-size: 24px;
   cursor: pointer;
   color: #ffffff;
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .close:hover {
   color: #ff4d4d;
+  transform: scale(1.2);
+}
+
+@keyframes tiltRotate {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalBounce {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
