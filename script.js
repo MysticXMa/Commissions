@@ -272,3 +272,49 @@ function sendMessageToDiscord(message, file = null, filename = null) {
       console.error("Error:", error);
     });
 }
+
+function openDetails(avatar) {
+  const avatarData = {
+    avatar1: {
+      title: "Erolic",
+      img: "avatars/11.png",
+      desc: "A blend between Erolis and its own unique style. It was my main avatar for a long time, featuring detailed texturing that I put a lot of care into. Making time: 3 days.",
+    },
+    avatar2: {
+      title: "Erolis",
+      img: "avatars/22.png",
+      desc: "My most loved avatar and the one I currently use. I spent a lot of time perfecting it and even learned Blender along the way. Making time: 1 week.",
+    },
+    avatar3: {
+      title: "Mistic",
+      img: "avatars/33.png",
+      desc: "My first-ever avatar! Back then, I was really impressed with how it turned out, and it still holds a special place for me. Making time: 4 days.",
+    },
+    avatar4: {
+      title: "Null",
+      img: "avatars/44.png",
+      desc: "A special avatar I made as a gift for my boyfriend, named after him. I put my heart into this one and learned a lot while trying my best. Making time: 1 week.",
+    },
+  };
+
+  const modal = document.getElementById("avatar-details");
+  const avatarInfo = avatarData[avatar];
+
+  if (!avatarInfo) return;
+
+  document.getElementById("avatar-title").innerText = avatarInfo.title;
+  document.getElementById("avatar-img").src = avatarInfo.img;
+  document.getElementById("avatar-desc").innerText = avatarInfo.desc;
+
+  modal.style.display = "flex";
+  modal.classList.add("show");
+}
+
+function closeDetails() {
+  const modal = document.getElementById("avatar-details");
+  modal.classList.remove("show");
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finished Projects</title>
+    <link rel="stylesheet" href="finished.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1><b style="color: #7bdfe1">Mystic's</b> Finished VRChat Avatars</h1>
+      <a href="index.html" class="back-button">← Back to Main Page</a>
+    </header>
+
+    <div class="gallery-container">
+      <div class="gallery">
+        <div class="avatar-card" onclick="openDetails('avatar1')">
+          <img src="avatars/1.png" alt="Avatar 1" />
+          <p>Avatar 1 - Erolic</p>
+        </div>
+        <div class="avatar-card" onclick="openDetails('avatar2')">
+          <img src="avatars/2.png" alt="Avatar 2" />
+          <p>Avatar 2 - Erolis</p>
+        </div>
+        <div class="avatar-card" onclick="openDetails('avatar3')">
+          <img src="avatars/3.png" alt="Avatar 3" />
+          <p>Avatar 3 - Mistic</p>
+        </div>
+        <div class="avatar-card" onclick="openDetails('avatar4')">
+          <img src="avatars/4.png" alt="Avatar 4" />
+          <p>Avatar 4 - Null</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="avatar-details" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close" onclick="closeDetails()">&times;</span>
+        <h2 id="avatar-title">Avatar Name</h2>
+        <img id="avatar-img" src="" alt="Avatar Image" />
+        <p id="avatar-desc">Description will go here...</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
