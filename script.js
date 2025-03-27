@@ -295,6 +295,11 @@ function openDetails(avatar) {
       img: "avatars/44.png",
       desc: "A special avatar I made as a gift for my boyfriend, named after him. I put my heart into this one and learned a lot while trying my best. Making time: 1 week.",
     },
+    avatar4: {
+      title: "Loufy",
+      img: "avatars/55.png",
+      desc: "My first finished commission. It has a nice color palette and a goober in it :D",
+    },
   };
 
   const modal = document.getElementById("avatar-details");
