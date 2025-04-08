@@ -300,6 +300,11 @@ function openDetails(avatar) {
       img: "avatars/55.png",
       desc: "My first finished commission. It has a nice color palette and a goober in it :D",
     },
+    avatar6: {
+      title: "Ara",
+      img: "avatars/66.png",
+      desc: "Honestly, I’m speechless—the avatar colors are stunning, and the entire base looks absolutely perfect. It gives off such a badass vibe, I love it!",
+    },
   };
 
   const modal = document.getElementById("avatar-details");
