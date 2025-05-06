@@ -1,144 +1,257 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en" style="scroll-behavior: smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mystic's Avatar Commissions</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <h1>
+          <span class="highlight">Mystic's</span> VRChat Avatar Commissions
+        </h1>
+        <a href="finished_projects.html" class="nav-link"
+          >View My Finished Work</a
+        >
+      </div>
+    </header>
 
-<body>
-    <header>
-        <div class="header-container">
-            <h1><b style="color: #7bdfe1;">Mystic's</b> VRChat Avatar Commissions</h1>
-            <a style="color: rgb(160, 255, 250); font-size: 2rem; font-family: Lucida Sans; text-decoration: none;" href="finished_projects.html" class="finished-projects-btn">Finished Projects</a>
-        </div>
-    </header>    
-
-    <div class="container">
-        <p class="description">
-            Hi, I'm Mystic! Have you ever dreamed of a custom furry avatar that perfectly
-            matches your personality?
-            Choose from Tier 1, Tier 2 or Tier 3 to start your journey toward your ideal avatar today!
+    <main class="container">
+      <!-- INTRO -->
+      <section class="intro">
+        <p>
+          🎨 Looking for a <strong>custom furry avatar</strong> that reflects
+          your unique style and personality? You're in the right place! Whether
+          you're new to VRChat or a seasoned explorer, I offer tailored packages
+          to bring your character to life.
         </p>
-        <p class="description">
-            <b>Important: I accept payments only through Cash App, Donation Alerts, or PayPal.</b>
+        <p class="note">
+          <strong>Payments accepted via:</strong> Cash App, Donation Alerts,
+          PayPal, Gumroad, Steam/Steam Wallet Codes, or other methods discussed
+          with the client.
         </p>
+      </section>
 
-        <section>
-            <h2 class="pricing-header">- Choose Your Pricing Tier -</h2>
-            <br>
-            <div class="pricing">
-                <div class="pricing-card">
-                    <h2>Starter Pack</h2>
-                    <p>This is a great option for simple and quick designs that still capture your personality.</p>
-                    <ul style="text-shadow: 0 0 4px rgb(154, 154, 154);">
-                        <li>1-2 days delivery time</li>
-                        <li>Avatar retexture (Audiolink included if required)</li>
-                    </ul><br><br><br><br><br>
-                    <p class="price">5€</p>
-                    <a href="#" class="order-now-btn" onclick="openForm('Starter Pack')">Order Now</a>
-                </div>
+      <!-- ABOUT ME -->
+      <section class="about-me">
+        <h2>👋 About Me</h2>
+        <p>
+          Hey there! I'm Mystic. I specialize in furry avatars with bold
+          personality, clean visuals, and immersive VFX. Whether it's your first
+          model or your fiftieth, I'm here to craft something truly
+          <em>you</em>.
+        </p>
+        <p>
+          My work focuses on quality, clarity, and collaboration — I keep you
+          updated through every step of the commission process!
+        </p>
+      </section>
 
-                <div class="pricing-card gold-pack">
-                    <h2>Premium Pack</h2>
-                    <p>This tier provides more customization with additional features for a personalized avatar.</p>
-                    <ul style="text-shadow: 0 0 4px rgb(255, 245, 132);">
-                        <li>2-4 days delivery time</li>
-                        <li>Avatar retexture (Audiolink included if required)</li>
-                        <li>Customized clothing (with texture rework if necessary)</li>
-                    </ul><br><br><br>
-                    <p class="price">15€</p>
-                    <a href="#" class="order-now-btn" onclick="openForm('Premium Pack')">Order Now</a>
-                </div>
+      <!-- HOW IT WORKS -->
+      <section class="how-it-works">
+        <h2>🛠️ How It Works</h2>
+        <ol>
+          <li>
+            <strong>Fill out the form:</strong> Include references and as much
+            detail as possible.
+          </li>
+          <li>
+            <strong>I confirm your order:</strong> I’ll reach out via Discord to
+            go over your design and start date.
+          </li>
+          <li>
+            <strong>Updates & WIPs:</strong> You’ll get progress updates
+            throughout creation.
+          </li>
+          <li>
+            <strong>Final delivery:</strong> Your avatar will be uploaded or
+            sent in the format you prefer.
+          </li>
+        </ol>
+      </section>
 
-                <div class="pricing-card ultimate-pack">
-                    <h2>Ultimate Pack</h2>
-                    <p>For the most complex avatars with intricate details, effects, and unique customization.</p>
-                    <ul style="text-shadow: 0 0 4px rgb(164, 246, 255);">
-                        <li>5+ days delivery time</li>
-                        <li>Avatar retexture (including Audiolink and custom effects if required)</li>
-                        <li>Customized clothing (with texture rework if necessary)</li>
-                        <li>Additional features upon request (Particle effects, Custom sounds, Custom animations...)</li>
-                    </ul>
-                    <p class="price"><b>30€+</b></p>
-                    <a href="#" class="order-now-btn" onclick="openForm('Ultimate Pack')">Order Now</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="form-container" style="display: none;">
-            <h2 id="form-title">Order Form</h2>
-            <form id="order-form" onsubmit="submitForm(event)">
-                <label for="name">Your Character Name:</label>
-                <input type="text" id="name" name="name" minlength="4" required placeholder="Enter at least 4 characters">
-
-                <label for="description">Avatar Description:</label>
-                <textarea id="description" name="description" rows="4" minlength="30" maxlength="200" required placeholder="Description (30-200 characters)"></textarea>
-
-                <label for="style">Avatar Base:</label>
-                <select id="style" name="style" required>
-                    <option value="Regulus">Regulus</option>
-                    <option value="Novabeast">Novabeast</option>
-                    <option value="Nardodragon">Nardodragon</option>
-                    <option value="Protogen">Protogen</option>
-                    <option value="Mayu">Mayu</option>
-                    <option value="Rexouium">Rexouium</option>
-                    <option value="Taidum">Taidum</option>
-                    <option value="Reg3.0">Regulus 3.0 (Mayu X Regulus)</option>
-                </select>
-
-                <div id="clothing-options" class="hidden">
-                    <label for="clothing">Clothing Amount <b>(Keep None if you select 5€):</b></label>
-                    <select id="clothing" name="clothing">
-                        <option value="None">None</option>
-                        <option value="2 Clothes">2 Clothes</option>
-                        <option value="3 Clothes">3 Clothes</option>
-                        <option value="4 Clothes">4 Clothes</option>
-                        <option value="5+ Clothes">5+ Clothes</option>
-                    </select>
-                </div>
-
-                <label for="file">Upload Reference Image (optional):</label>
-                <input type="file" id="file" name="file" accept="image/*">
-
-                <label for="discord-id">Discord Name:</label>
-                <input type="text" id="discord-id" name="discord-id" minlength="3" required placeholder="Your Discord Name (at least 3 characters)">
-
-                <input type="hidden" id="selected-pack" name="pack">
-
-                <div>
-                    <label>
-                        <input type="checkbox" id="accept-tos" name="accept-tos" required>
-                        I have read and agree to the <a href="tos.html" target="_blank">Terms of Service</a>.
-                    </label>
-                </div>
-
-                <div class="warning" style="background-color: #ff8d8d; border: 2px solid #ed2727; border-radius: 5px; padding: 15px; margin: 20px 0;">
-                    <p style="color: #1c1c1c; font-weight: bold;">⚠️ Important Notice: By placing an order, you acknowledge that all purchases are final. Refunds are only available under specific circumstances outlined in the Terms of Service. Please ensure you review your order and the Terms of Service thoroughly before proceeding.</p>
-                </div>                              
-
-                <button type="submit" class="button">Submit Order</button>
-            </form>
-        </div><br><br>
-        <hr>
-        <footer class="social-footer">
-            <h3>Follow Me On:</h3>
+      <!-- PRICING -->
+      <section class="pricing-section">
+        <h2>🌟 Choose Your Commission Tier</h2>
+        <div class="pricing-grid">
+          <!-- STARTER PACK -->
+          <div class="pricing-card starter">
+            <h3>Starter Pack</h3>
             <p>
-            <ul class="social-links">
-                <li><a href="https://www.youtube.com/@MysticXMac" target="_blank" class="social-icon youtube">
-                        <i class="fab fa-youtube"></i>YouTube</a></li>
-                <li><a href="https://x.com/MysticXMac" target="_blank" class="social-icon twitter">
-                        <i class="fab fa-twitter"></i>Twitter</a></li>
-                <li><a href="https://www.instagram.com/mysti_cxmac/" w target="_blank" class="social-icon instagram">
-                        <i class="fab fa-instagram"></i>Instagram</a></li>
-            </ul>
+              Perfect for simple, quick avatars that still pop with personality.
             </p>
-        </footer>
-    </div>
+            <ul>
+              <li>🕒 1-2 day delivery</li>
+              <li>🎨 Retexture (Audiolink optional)</li>
+            </ul>
+            <div class="price">5€</div>
+            <button onclick="openForm('Starter Pack')" class="btn">
+              Order Now
+            </button>
+          </div>
 
-    <script src="script.js"></script>
-</body>
+          <!-- PREMIUM PACK -->
+          <div class="pricing-card premium">
+            <h3>Premium Pack</h3>
+            <p>
+              More personalization for a next-level look that suits your vibe.
+            </p>
+            <ul>
+              <li>🕒 2-4 day delivery</li>
+              <li>🎨 Retexture + Audiolink</li>
+              <li>👕 Custom Clothing Options</li>
+            </ul>
+            <div class="price">15€</div>
+            <button onclick="openForm('Premium Pack')" class="btn">
+              Order Now
+            </button>
+          </div>
 
+          <!-- ULTIMATE PACK -->
+          <div class="pricing-card ultimate">
+            <h3>Ultimate Pack</h3>
+            <p>
+              Top-tier customization for highly detailed, expressive avatars.
+            </p>
+            <ul>
+              <li>🕒 5+ day delivery</li>
+              <li>🎨 Advanced Retexture + FX + Audiolink</li>
+              <li>👕 Clothing & Texture Reworks</li>
+              <li>✨ Custom Animations, Sounds & VFX</li>
+            </ul>
+            <div class="price">30€+</div>
+            <button onclick="openForm('Ultimate Pack')" class="btn">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDER FORM -->
+      <section class="form-container" style="display: none">
+        <h2>📝 Commission Request</h2>
+        <form id="order-form" onsubmit="submitForm(event)">
+          <label for="name">Character Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            minlength="4"
+            required
+            placeholder="Example: Skyflame"
+          />
+
+          <label for="description">Avatar Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            minlength="30"
+            maxlength="200"
+            required
+            placeholder="Personality, color scheme, key details..."
+          ></textarea>
+
+          <label for="style">Avatar Base</label>
+          <select id="style" name="style" required>
+            <option value="Regulus">Regulus</option>
+            <option value="Novabeast">Novabeast</option>
+            <option value="Nardodragon">Nardodragon</option>
+            <option value="Protogen">Protogen</option>
+            <option value="Mayu">Mayu</option>
+            <option value="Rexouium">Rexouium</option>
+            <option value="Taidum">Taidum</option>
+            <option value="Reg3.0">Regulus 3.0 (Mayu X Regulus)</option>
+          </select>
+
+          <div id="clothing-options" class="hidden">
+            <label for="clothing">Clothing Options</label>
+            <select id="clothing" name="clothing">
+              <option value="None">None</option>
+              <option value="2 Clothes">2 Pieces</option>
+              <option value="3 Clothes">3 Pieces</option>
+              <option value="4 Clothes">4 Pieces</option>
+              <option value="5+ Clothes">5+ Pieces</option>
+            </select>
+          </div>
+
+          <label for="file">Upload a Reference Image</label>
+          <div class="file-upload-wrapper">
+            <input
+              type="file"
+              id="file"
+              name="file"
+              accept="image/*"
+              onchange="handleImagePreview()"
+            />
+            <label for="file" class="btn upload-btn">Choose Image</label>
+            <span id="file-name" class="file-name">No file chosen</span>
+          </div>
+
+          <!-- Image preview -->
+          <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
+            <h4>Preview:</h4>
+            <img id="image-preview" src="#" alt="Image Preview" />
+
+            <label class="checkbox-wrapper">
+              <input
+                type="checkbox"
+                id="preview-confirm"
+                name="preview-confirm"
+                required
+              />
+              I confirm this image preview is correct and I want to proceed.
+            </label>
+          </div>
+
+          <label for="discord-id">Your Discord Username</label>
+          <input
+            type="text"
+            id="discord-id"
+            name="discord-id"
+            required
+            placeholder="Example: Mystic#1234"
+          />
+
+          <input type="hidden" id="selected-pack" name="pack" />
+
+          <label>
+            <input type="checkbox" id="accept-tos" name="accept-tos" required />
+            I agree to the
+            <a href="tos.html" target="_blank">Terms of Service</a>.
+          </label>
+
+          <div class="notice">
+            ⚠️ <strong>All sales are final.</strong> Refunds are only available
+            under conditions listed in the Terms of Service.
+          </div>
+
+          <button type="submit" class="btn submit">Submit Order</button>
+          <button class="cancel-btn" onclick="cancelOrder()">
+            Cancel Order
+          </button>
+        </form>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <h3>Connect With Me</h3>
+        <ul class="social-links">
+          <li>
+            <a href="https://www.youtube.com/@MysticXMac" target="_blank"
+              >📺 YouTube</a
+            >
+          </li>
+          <li>
+            <a href="https://x.com/MysticXMac" target="_blank">🐦 Twitter</a>
+          </li>
+        </ul>
+      </footer>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
 </html>

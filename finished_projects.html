@@ -11,42 +11,103 @@
   <body>
     <header>
       <h1><b style="color: #7bdfe1">Mystic's</b> Finished VRChat Avatars</h1>
-      <a href="index.html" class="back-button">← Back to Main Page</a>
+      <a
+        href="index.html"
+        class="back-button"
+        role="link"
+        aria-label="Back to the main page"
+        >← Back to Main Page</a
+      >
     </header>
 
     <div class="gallery-container">
       <div class="gallery">
-        <div class="avatar-card" onclick="openDetails('avatar1')">
-          <img src="avatars/1.png" alt="Avatar 1" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar1')"
+          role="button"
+          aria-label="View details of Avatar 1 - Erolic"
+        >
+          <img src="avatars/1.png" alt="Avatar 1 - Erolic" />
           <p>Avatar 1 - Erolic</p>
         </div>
-        <div class="avatar-card" onclick="openDetails('avatar2')">
-          <img src="avatars/2.png" alt="Avatar 2" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar2')"
+          role="button"
+          aria-label="View details of Avatar 2 - Erolis"
+        >
+          <img src="avatars/2.png" alt="Avatar 2 - Erolis" />
           <p>Avatar 2 - Erolis</p>
         </div>
-        <div class="avatar-card" onclick="openDetails('avatar3')">
-          <img src="avatars/3.png" alt="Avatar 3" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar3')"
+          role="button"
+          aria-label="View details of Avatar 3 - Mistic"
+        >
+          <img src="avatars/3.png" alt="Avatar 3 - Mistic" />
           <p>Avatar 3 - Mistic</p>
         </div>
-        <div class="avatar-card" onclick="openDetails('avatar4')">
-          <img src="avatars/4.png" alt="Avatar 4" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar4')"
+          role="button"
+          aria-label="View details of Avatar 4 - Null"
+        >
+          <img src="avatars/4.png" alt="Avatar 4 - Null" />
           <p>Avatar 4 - Null</p>
         </div>
-        <div class="avatar-card" onclick="openDetails('avatar5')">
-          <img src="avatars/5.png" alt="Avatar 5" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar5')"
+          role="button"
+          aria-label="View details of Avatar 5 - Loufy"
+        >
+          <img src="avatars/5.png" alt="Avatar 5 - Loufy" />
           <p>Avatar 5 - Loufy</p>
         </div>
-        <div class="avatar-card" onclick="openDetails('avatar6')">
-          <img src="avatars/6.png" alt="Avatar 6" />
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar6')"
+          role="button"
+          aria-label="View details of Avatar 6 - Ara"
+        >
+          <img src="avatars/6.png" alt="Avatar 6 - Ara" />
           <p>Avatar 6 - Ara</p>
+        </div>
+        <div
+          class="avatar-card"
+          onclick="openDetails('avatar7')"
+          role="button"
+          aria-label="View details of Avatar 6 - Ara"
+        >
+          <img src="avatars/7.png" alt="Avatar 7 - Cristal" />
+          <p>Avatar 7 - Cristal</p>
         </div>
       </div>
     </div>
 
-    <div id="avatar-details" class="modal" style="display: none">
+    <div
+      id="avatar-details"
+      class="modal"
+      style="display: none"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="avatar-title"
+      aria-describedby="avatar-desc"
+    >
       <div class="modal-content">
-        <span class="close" onclick="closeDetails()">&times;</span>
+        <span
+          class="close"
+          onclick="closeDetails()"
+          aria-label="Close avatar details"
+          tabindex="0"
+        >
+          &times;
+        </span>
         <h2 id="avatar-title">Avatar Name</h2>
+        <br />
         <img id="avatar-img" src="" alt="Avatar Image" />
         <p id="avatar-desc">Description will go here...</p>
       </div>
