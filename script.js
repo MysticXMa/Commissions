@@ -147,7 +147,14 @@ function submitForm(event) {
   };
 
   const file = formData.get("file");
+  const previewConfirmed = document.getElementById("preview-confirm").checked;
+
   if (file && file.size > 0) {
+    if (!previewConfirmed) {
+      alert("Please confirm the image preview before submitting.");
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = () => {
       const fileType = file.type.split("/")[1];
@@ -171,12 +178,22 @@ function submitForm(event) {
 function sendMessageToDiscord(message, file = null, filename = null) {
   const formData = new FormData();
   formData.append("payload_json", JSON.stringify(message));
-  if (file && filename) formData.append("file", file, filename);
+
+  if (file && filename) {
+    const previewConfirmed = document.getElementById("preview-confirm").checked;
+    if (!previewConfirmed) {
+      alert("Please confirm the image preview before submitting.");
+      return;
+    }
+    formData.append("file", file, filename);
+  }
 
   fetch(WEBHOOK_URL, { method: "POST", body: formData })
     .then(() => {
       alert("Order submitted successfully!");
       document.getElementById("order-form").reset();
+      const formContainer = document.querySelector(".form-container");
+      formContainer.style.display = "none";
     })
     .catch((error) => {
       alert("Error submitting order.");
