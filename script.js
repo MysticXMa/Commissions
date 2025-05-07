@@ -1,25 +1,28 @@
-document.getElementById("file").addEventListener("change", function () {
-  const fileInput = this,
-    previewContainer = document.getElementById("preview-container"),
-    imagePreview = document.getElementById("image-preview"),
-    fileNameDisplay = document.getElementById("file-name"),
-    confirmCheckbox = document.getElementById("confirm-preview");
+const fileInput = document.getElementById("file");
 
-  if (fileInput.files && fileInput.files[0]) {
-    const file = fileInput.files[0];
-    fileNameDisplay.textContent = file.name;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      imagePreview.src = e.target.result;
-      previewContainer.classList.remove("hidden");
-      confirmCheckbox.checked = false;
-    };
-    reader.readAsDataURL(file);
-  } else {
-    fileNameDisplay.textContent = "No file chosen";
-    previewContainer.classList.add("hidden");
-  }
-});
+if (fileInput) {
+  fileInput.addEventListener("change", function () {
+    const previewContainer = document.getElementById("preview-container"),
+      imagePreview = document.getElementById("image-preview"),
+      fileNameDisplay = document.getElementById("file-name"),
+      confirmCheckbox = document.getElementById("confirm-preview");
+
+    if (fileInput.files && fileInput.files[0]) {
+      const file = fileInput.files[0];
+      fileNameDisplay.textContent = file.name;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        imagePreview.src = e.target.result;
+        previewContainer.classList.remove("hidden");
+        confirmCheckbox.checked = false;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      fileNameDisplay.textContent = "No file chosen";
+      previewContainer.classList.add("hidden");
+    }
+  });
+}
 
 function handleImagePreview() {
   const fileInput = document.getElementById("file"),

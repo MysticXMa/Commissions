@@ -13,7 +13,7 @@
       <h1><b style="color: #7bdfe1">Mystic's</b> Finished VRChat Avatars</h1>
       <a
         href="index.html"
-        class="back-button"
+        class="back-button nav-link"
         role="link"
         aria-label="Back to the main page"
         >← Back to Main Page</a
@@ -21,73 +21,57 @@
     </header>
 
     <div class="gallery-container">
-      <div class="gallery">
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar1')"
-          role="button"
-          aria-label="View details of Avatar 1 - Erolic"
-        >
-          <img src="avatars/1.png" alt="Avatar 1 - Erolic" />
-          <p>Avatar 1 - Erolic</p>
+      <!-- Regulus Group -->
+      <div class="avatar-group">
+        <h2 class="group-title">Regulus</h2>
+        <div class="gallery">
+          <div class="avatar-card" onclick="openDetails('avatar1')">
+            <img src="avatars/1.png" alt="Avatar 1 - Erolic" />
+            <p>Erolic</p>
+          </div>
+          <div class="avatar-card" onclick="openDetails('avatar3')">
+            <img src="avatars/3.png" alt="Avatar 3 - Mistic" />
+            <p>Mistic</p>
+          </div>
+          <div class="avatar-card" onclick="openDetails('avatar5')">
+            <img src="avatars/5.png" alt="Avatar 5 - Loufy" />
+            <p>Loufy</p>
+          </div>
+          <div class="avatar-card" onclick="openDetails('avatar6')">
+            <img src="avatars/6.png" alt="Avatar 6 - Ara" />
+            <p>Ara</p>
+          </div>
         </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar2')"
-          role="button"
-          aria-label="View details of Avatar 2 - Erolis"
-        >
-          <img src="avatars/2.png" alt="Avatar 2 - Erolis" />
-          <p>Avatar 2 - Erolis</p>
+      </div>
+
+      <!-- Regulus 3.0 Group -->
+      <div class="avatar-group">
+        <h2 class="group-title">Regulus 3.0 (Mayu X Regulus)</h2>
+        <div class="gallery">
+          <div class="avatar-card" onclick="openDetails('avatar2')">
+            <img src="avatars/2.png" alt="Avatar 2 - Erolis" />
+            <p>Erolis</p>
+          </div>
+          <div class="avatar-card" onclick="openDetails('avatar7')">
+            <img src="avatars/7.png" alt="Avatar 7 - Cristal" />
+            <p>Cristal</p>
+          </div>
         </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar3')"
-          role="button"
-          aria-label="View details of Avatar 3 - Mistic"
-        >
-          <img src="avatars/3.png" alt="Avatar 3 - Mistic" />
-          <p>Avatar 3 - Mistic</p>
-        </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar4')"
-          role="button"
-          aria-label="View details of Avatar 4 - Null"
-        >
-          <img src="avatars/4.png" alt="Avatar 4 - Null" />
-          <p>Avatar 4 - Null</p>
-        </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar5')"
-          role="button"
-          aria-label="View details of Avatar 5 - Loufy"
-        >
-          <img src="avatars/5.png" alt="Avatar 5 - Loufy" />
-          <p>Avatar 5 - Loufy</p>
-        </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar6')"
-          role="button"
-          aria-label="View details of Avatar 6 - Ara"
-        >
-          <img src="avatars/6.png" alt="Avatar 6 - Ara" />
-          <p>Avatar 6 - Ara</p>
-        </div>
-        <div
-          class="avatar-card"
-          onclick="openDetails('avatar7')"
-          role="button"
-          aria-label="View details of Avatar 6 - Ara"
-        >
-          <img src="avatars/7.png" alt="Avatar 7 - Cristal" />
-          <p>Avatar 7 - Cristal</p>
+      </div>
+
+      <!-- Nardodragon Group -->
+      <div class="avatar-group">
+        <h2 class="group-title">Nardodragon</h2>
+        <div class="gallery">
+          <div class="avatar-card" onclick="openDetails('avatar4')">
+            <img src="avatars/4.png" alt="Avatar 4 - Null" />
+            <p>Null</p>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Modal for details -->
     <div
       id="avatar-details"
       class="modal"
