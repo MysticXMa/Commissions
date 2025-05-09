@@ -2,24 +2,28 @@ const fileInput = document.getElementById("file");
 
 if (fileInput) {
   fileInput.addEventListener("change", function () {
-    const previewContainer = document.getElementById("preview-container"),
+    const previewWrapper = document.getElementById("image-preview-wrapper"),
       imagePreview = document.getElementById("image-preview"),
       fileNameDisplay = document.getElementById("file-name"),
-      confirmCheckbox = document.getElementById("confirm-preview");
+      previewConfirm = document.getElementById("preview-confirm");
 
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
       fileNameDisplay.textContent = file.name;
+
+      // Read and display the file
       const reader = new FileReader();
       reader.onload = (e) => {
         imagePreview.src = e.target.result;
-        previewContainer.classList.remove("hidden");
-        confirmCheckbox.checked = false;
+        previewWrapper.classList.remove("hidden");
+        previewConfirm.checked = false;
+        previewConfirm.required = true;
       };
       reader.readAsDataURL(file);
     } else {
       fileNameDisplay.textContent = "No file chosen";
-      previewContainer.classList.add("hidden");
+      previewWrapper.classList.add("hidden");
+      previewConfirm.required = false;
     }
   });
 }
