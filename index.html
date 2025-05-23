@@ -13,7 +13,7 @@
         <h1>
           <span class="highlight">Mystic's</span> VRChat Avatar Commissions
         </h1>
-        <a href="finished_projects.html" class="nav-link"
+        <a href="Pages/finished_projects.html" class="nav-link"
           >View My Finished Work</a
         >
       </div>
@@ -21,12 +21,17 @@
 
     <main class="container">
       <!-- INTRO -->
+      <section class="countdown">
+        <div id="countdown-box">
+          ⏳ <strong>Commissions close in:</strong>
+          <span id="countdown"></span>
+        </div>
+      </section>
+
       <section class="intro">
         <p>
           🎨 Looking for a <strong>custom furry avatar</strong> that reflects
-          your unique style and personality? You're in the right place! Whether
-          you're new to VRChat or a seasoned explorer, I offer tailored packages
-          to bring your character to life.
+          your unique style and personality? You're in the right place!
         </p>
         <p class="note">
           <strong>Payments accepted via:</strong> Cash App, Donation Alerts,
@@ -40,13 +45,7 @@
         <h2>👋 About Me</h2>
         <p>
           Hey there! I'm Mystic. I specialize in furry avatars with bold
-          personality, clean visuals, and immersive VFX. Whether it's your first
-          model or your fiftieth, I'm here to craft something truly
-          <em>you</em>.
-        </p>
-        <p>
-          My work focuses on quality, clarity, and collaboration — I keep you
-          updated through every step of the commission process!
+          personality, clean visuals, and immersive VFX.
         </p>
       </section>
 
@@ -55,36 +54,49 @@
         <h2>🛠️ How It Works</h2>
         <ol>
           <li>
-            <strong>Fill out the form:</strong> Include references and as much
-            detail as possible.
+            <strong>Fill out the form:</strong> Add references and details.
           </li>
-          <li>
-            <strong>I confirm your order:</strong> I’ll reach out via Discord to
-            go over your design and start date.
-          </li>
-          <li>
-            <strong>Updates & WIPs:</strong> You’ll get progress updates
-            throughout creation.
-          </li>
-          <li>
-            <strong>Final delivery:</strong> Your avatar will be uploaded or
-            sent in the format you prefer.
-          </li>
+          <li><strong>Order confirmed:</strong> I’ll DM you on Discord.</li>
+          <li><strong>Progress updates:</strong> You'll stay in the loop.</li>
+          <li><strong>Final delivery:</strong> Avatar delivered your way.</li>
         </ol>
       </section>
+
+      <div class="warning">
+        ⚠️ <strong>Note:</strong> Every commission pack comes with setup
+        instructions to help you get started quickly. You'll receive a
+        well-organized folder and easy-to-follow steps tailored to your order.
+      </div>
 
       <!-- PRICING -->
       <section class="pricing-section">
         <h2>🌟 Choose Your Commission Tier</h2>
         <div class="pricing-grid">
-          <!-- STARTER PACK -->
+          <!-- BASIC -->
+          <div class="pricing-card basic">
+            <h3>Basic Pack</h3>
+            <p>🖼️ For concept art or static previews. Not VRChat-ready.</p>
+            <ul>
+              <li>🕒 1-day delivery</li>
+              <li>🎨 Basic retexture (flat image)</li>
+              <li>🖼️ PNG/JPG/JPEG preview only</li>
+              <li>🗂️ Organized folder + setup instructions</li>
+            </ul>
+            <div class="price">5€</div>
+            <button onclick="openForm('Basic Pack')" class="btn">
+              Order Now
+            </button>
+          </div>
+
+          <!-- STARTER -->
           <div class="pricing-card starter">
             <h3>Starter Pack</h3>
             <p>
-              Perfect for simple, quick avatars that still pop with personality.
+              🎨 Includes everything from Basic Pack + VRChat starter files.
             </p>
             <ul>
               <li>🕒 1-2 day delivery</li>
+              <li>📁 SPP + Blender file</li>
               <li>🎨 Retexture (Audiolink optional)</li>
             </ul>
             <div class="price">10€</div>
@@ -93,16 +105,15 @@
             </button>
           </div>
 
-          <!-- PREMIUM PACK -->
+          <!-- PREMIUM -->
           <div class="pricing-card premium">
             <h3>Premium Pack</h3>
-            <p>
-              More personalization for a next-level look that suits your vibe.
-            </p>
+            <p>👕 Includes everything from Starter Pack + full VRChat setup.</p>
             <ul>
-              <li>🕒 2-4 day delivery</li>
-              <li>🎨 Retexture + Audiolink</li>
-              <li>👕 Custom Clothing Options</li>
+              <li>🕒 2-5 day delivery</li>
+              <li>👕 Custom clothing options</li>
+              <li>🛠️ PC + Quest compatibility</li>
+              <li>📁 Unity scene setup</li>
             </ul>
             <div class="price">20€</div>
             <button onclick="openForm('Premium Pack')" class="btn">
@@ -110,25 +121,49 @@
             </button>
           </div>
 
-          <!-- ULTIMATE PACK -->
+          <!-- ULTIMATE -->
           <div class="pricing-card ultimate">
             <h3>Ultimate Pack</h3>
             <p>
-              Top-tier customization for highly detailed, expressive avatars.
+              ✨ Includes everything from Premium Pack + FX and expressions.
             </p>
             <ul>
-              <li>🕒 5+ day delivery</li>
-              <li>🎨 Advanced Retexture + FX + Audiolink</li>
-              <li>👕 Clothing & Texture Reworks</li>
-              <li>✨ Custom Animations, Sounds & VFX</li>
+              <li>🕒 1-2 week delivery</li>
+              <li>🎞️ FX (Audiolink, Emission, Particles)</li>
+              <li>🎵 Emotes, toggles, and sound setup</li>
             </ul>
             <div class="price">40€+</div>
             <button onclick="openForm('Ultimate Pack')" class="btn">
               Order Now
             </button>
           </div>
+
+          <!-- CELESTIAL -->
+          <div class="pricing-card celestial">
+            <div class="celestial-effects"><div class="star-field"></div></div>
+            <h3>Celestial Pack</h3>
+            <p>
+              🌌 Includes everything from Ultimate Pack + cinematic final
+              polish.
+            </p>
+            <ul>
+              <li>🕒 2+ weeks delivery</li>
+              <li>🌈 Custom shaders + lighting passes</li>
+              <li>📘 Optimization guide + full dev kit</li>
+            </ul>
+            <div class="price">60€+</div>
+            <button onclick="openForm('Celestial Pack')" class="btn">
+              Order Now
+            </button>
+          </div>
         </div>
       </section>
+
+      <div id="premium-warning" class="warning hidden">
+        ⚠️ <strong>Important:</strong> You're ordering a high-tier commission.
+        Please ensure you truly need everything included in this pack. You’ll be
+        asked to confirm this before final submission.
+      </div>
 
       <!-- ORDER FORM -->
       <section class="form-container" style="display: none">
@@ -150,13 +185,18 @@
             name="description"
             rows="4"
             minlength="30"
-            maxlength="200"
+            maxlength="500"
             required
             placeholder="Personality, color scheme, key details..."
           ></textarea>
 
           <label for="style">Avatar Base</label>
-          <select id="style" name="style" required>
+          <select
+            id="style"
+            name="style"
+            required
+            onchange="handleAvatarBaseChange()"
+          >
             <option value="Regulus">Regulus</option>
             <option value="Novabeast">Novabeast</option>
             <option value="Nardodragon">Nardodragon</option>
@@ -165,7 +205,19 @@
             <option value="Rexouium">Rexouium</option>
             <option value="Taidum">Taidum</option>
             <option value="Reg3.0">Regulus 3.0 (Mayu X Regulus)</option>
+            <option value="Other">Other (Type Below)</option>
           </select>
+
+          <div id="custom-base-wrapper" class="hidden">
+            <label for="custom-base">Custom Base Name</label>
+            <input
+              type="text"
+              id="custom-base"
+              name="custom-base"
+              pattern=".{3,}"
+              placeholder="Custom base name"
+            />
+          </div>
 
           <div id="clothing-options" class="hidden">
             <label for="clothing">Clothing Options</label>
@@ -178,31 +230,30 @@
             </select>
           </div>
 
-          <label for="file">Upload a Reference Image</label>
+          <label for="file">Upload Reference Images (up to 5)</label>
           <div class="file-upload-wrapper">
             <input
               type="file"
               id="file"
               name="file"
               accept="image/*"
-              onchange="handleImagePreview()"
+              multiple
+              onchange="handleImagePreview(this)"
             />
-            <label for="file" class="btn upload-btn">Choose Image</label>
-            <span id="file-name" class="file-name">No file chosen</span>
+            <label for="file" class="btn upload-btn">Choose Images</label>
+            <span id="file-name" class="file-name">No files chosen</span>
           </div>
 
-          <!-- Image preview -->
           <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
             <h4>Preview:</h4>
-            <img id="image-preview" src="#" alt="Image Preview" />
-
+            <div id="image-preview-list" class="image-preview-list"></div>
             <label class="checkbox-wrapper">
               <input
                 type="checkbox"
                 id="preview-confirm"
                 name="preview-confirm"
               />
-              I confirm this image preview is correct and I want to proceed.
+              I confirm these image previews are correct and I want to proceed.
             </label>
           </div>
 
@@ -212,6 +263,7 @@
             id="discord-id"
             name="discord-id"
             required
+            pattern="^.{3,32}#[0-9]{4}$"
             placeholder="Example: Mystic#1234"
           />
 
@@ -220,12 +272,12 @@
           <label>
             <input type="checkbox" id="accept-tos" name="accept-tos" required />
             I agree to the
-            <a href="tos.html" target="_blank">Terms of Service</a>.
+            <a href="Pages/tos.html" target="_blank">Terms of Service</a>.
           </label>
 
           <div class="notice">
-            ⚠️ <strong>All sales are final.</strong> Refunds are only available
-            under conditions listed in the Terms of Service.
+            ⚠️ <strong>All sales are final.</strong> Refunds only as stated in
+            the ToS.
           </div>
 
           <button type="submit" class="btn submit">Submit Order</button>
@@ -251,6 +303,15 @@
       </footer>
     </main>
 
-    <script src="script.js" defer></script>
+    <!-- Overlay when commissions close -->
+    <div id="overlay-closed" class="hidden">
+      <div class="overlay-content">
+        ❌ <strong>Commissions Closed for Summer</strong><br /><br />
+        🔓 Reopens in: <strong id="overlay-timer">Calculating...</strong>
+      </div>
+    </div>
+
+    <script src="Scripts/script.js" defer></script>
+    <script src="Scripts/handler.js" defer></script>
   </body>
 </html>

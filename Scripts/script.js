@@ -28,53 +28,72 @@ if (fileInput) {
   });
 }
 
-function handleImagePreview() {
-  const fileInput = document.getElementById("file"),
-    fileNameDisplay = document.getElementById("file-name"),
-    previewWrapper = document.getElementById("image-preview-wrapper"),
-    previewImg = document.getElementById("image-preview"),
-    previewConfirm = document.getElementById("preview-confirm"),
-    file = fileInput.files[0];
+function handleImagePreview(input) {
+  const previewWrapper = document.getElementById("image-preview-wrapper");
+  const previewList = document.getElementById("image-preview-list");
+  const fileName = document.getElementById("file-name");
 
-  if (file) {
-    fileNameDisplay.textContent = file.name;
+  previewList.innerHTML = "";
+  fileName.textContent = input.files.length + " file(s) selected";
+
+  if (input.files.length > 0) {
+    previewWrapper.classList.remove("hidden");
+  }
+
+  Array.from(input.files).forEach((file) => {
     const reader = new FileReader();
-    reader.onload = (e) => {
-      previewImg.src = e.target.result;
-      previewWrapper.classList.remove("hidden");
-      previewConfirm.required = true;
+    reader.onload = function (e) {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.classList.add("preview-image");
+      previewList.appendChild(img);
     };
     reader.readAsDataURL(file);
-  } else {
-    fileNameDisplay.textContent = "No file chosen";
-    previewWrapper.classList.add("hidden");
-    previewConfirm.required = false;
-  }
+  });
 }
 
-function openForm(tier) {
+function openForm(packName) {
   const formContainer = document.querySelector(".form-container");
   const clothingOptions = document.getElementById("clothing-options");
+  const warningBox = document.getElementById("premium-warning");
 
   formContainer.style.display = "block";
 
-  if (tier === "Premium Pack" || tier === "Ultimate Pack") {
+  // Show warning for high-tier packs
+  if (packName === "Ultimate Pack" || packName === "Legendary Pack") {
+    warningBox.classList.remove("hidden");
+  } else {
+    warningBox.classList.add("hidden");
+  }
+
+  // Show clothing options for Premium or higher
+  if (
+    packName === "Premium Pack" ||
+    packName === "Ultimate Pack" ||
+    packName === "Legendary Pack"
+  ) {
     clothingOptions.style.display = "block";
   } else {
     clothingOptions.style.display = "none";
   }
 
+  // Set form title
   let formTitle = document.getElementById("form-title");
-
   if (!formTitle) {
     formTitle = document.createElement("h2");
     formTitle.id = "form-title";
     formContainer.insertBefore(formTitle, formContainer.firstChild);
   }
+  formTitle.innerText = `Order Form for ${packName}`;
 
-  formTitle.innerText = `Order Form for ${tier}`;
+  // Set selected pack
+  document.getElementById("selected-pack").value = packName;
 
-  document.getElementById("selected-pack").value = tier;
+  // Smooth scroll to form
+  window.scrollTo({
+    top: formContainer.offsetTop,
+    behavior: "smooth",
+  });
 }
 
 const WEBHOOK_URL =
@@ -212,37 +231,37 @@ function openDetails(avatar) {
   const avatarData = {
     avatar1: {
       title: "Erolic",
-      img: "avatars/11.png",
+      img: "../avatars/11.png",
       desc: "A blend between Erolis and its own unique style.",
     },
     avatar2: {
       title: "Erolis",
-      img: "avatars/22.png",
+      img: "../avatars/22.png",
       desc: "My most loved avatar and the one I currently use.",
     },
     avatar3: {
       title: "Mistic",
-      img: "avatars/33.png",
+      img: "../avatars/33.png",
       desc: "My first-ever avatar!",
     },
     avatar4: {
       title: "Null",
-      img: "avatars/44.png",
+      img: "../avatars/44.png",
       desc: "A special avatar I made as a gift for my boyfriend.",
     },
     avatar5: {
       title: "Loufy",
-      img: "avatars/55.png",
+      img: "../avatars/55.png",
       desc: "My first finished commission.",
     },
     avatar6: {
       title: "Ara",
-      img: "avatars/66.png",
+      img: "../avatars/66.png",
       desc: "The avatar colors are stunning, and it gives off a badass vibe.",
     },
     avatar7: {
       title: "Cristal",
-      img: "avatars/77.png",
+      img: "../avatars/77.png",
       desc: "Is it a crystal or a gem? Nah, it’s just me trying to outshine everything around me. Sparkles included!",
     },
   };
