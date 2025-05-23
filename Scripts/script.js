@@ -60,7 +60,7 @@ function openForm(packName) {
   formContainer.style.display = "block";
 
   // Show warning for high-tier packs
-  if (packName === "Ultimate Pack" || packName === "Legendary Pack") {
+  if (packName === "Ultimate Pack" || packName === "Celestial Pack") {
     warningBox.classList.remove("hidden");
   } else {
     warningBox.classList.add("hidden");
