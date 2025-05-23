@@ -70,7 +70,7 @@ function openForm(packName) {
   if (
     packName === "Premium Pack" ||
     packName === "Ultimate Pack" ||
-    packName === "Legendary Pack"
+    packName === "Celestial Pack"
   ) {
     clothingOptions.style.display = "block";
   } else {
