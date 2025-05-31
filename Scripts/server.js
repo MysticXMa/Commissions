@@ -38,10 +38,7 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       color: 0x00ffff,
       timestamp: new Date().toISOString(),
       fields: [
-        {
-          name: "👤 Character Name",
-          value: `\`${name}\``,
-        },
+        { name: "👤 Character Name", value: `\`${name}\`` },
         {
           name: "📝 Description",
           value:
@@ -49,11 +46,7 @@ app.post("/submit", upload.array("file"), async (req, res) => {
               ? description.substring(0, 1021) + "..."
               : description,
         },
-        {
-          name: "🧍 Avatar Base",
-          value: `\`${baseUsed}\``,
-          inline: true,
-        },
+        { name: "🧍 Avatar Base", value: `\`${baseUsed}\``, inline: true },
         {
           name: "🧢 Clothing",
           value: clothing ? `\`${clothing}\`` : "*Not specified*",
@@ -64,10 +57,7 @@ app.post("/submit", upload.array("file"), async (req, res) => {
           value: pack ? `\`${pack}\`` : "*Not selected*",
           inline: true,
         },
-        {
-          name: "🆔 Discord ID",
-          value: `\`${discordId}\``,
-        },
+        { name: "🆔 Discord ID", value: `\`${discordId}\`` },
       ],
     };
 
@@ -85,16 +75,12 @@ app.post("/submit", upload.array("file"), async (req, res) => {
     const imageEmbeds = (req.files || []).map((file, index) => ({
       title: `🖼️ Preview Image ${index + 1}`,
       color: 0x00ffff,
-      image: {
-        url: `attachment://${file.originalname}`,
-      },
+      image: { url: `attachment://${file.originalname}` },
     }));
 
     formData.append(
       "payload_json",
-      JSON.stringify({
-        embeds: [mainEmbed, ...imageEmbeds],
-      })
+      JSON.stringify({ embeds: [mainEmbed, ...imageEmbeds] })
     );
 
     await axios.post(WEBHOOK_URL, formData, {

@@ -1,3 +1,5 @@
+let selectedFiles = [];
+
 const fileInput = document.getElementById("file");
 
 if (fileInput) {
@@ -15,11 +17,13 @@ if (fileInput) {
         maxAllowed - currentCount
       );
 
+      filesToAdd.forEach((file) => selectedFiles.push(file));
+
       fileNameDisplay.textContent = `${
         imagePreview.children.length + filesToAdd.length
       } file(s) selected`;
 
-      filesToAdd.forEach((file) => {
+      filesToAdd.forEach((file, fileIndex) => {
         const reader = new FileReader();
         reader.onload = (e) => {
           const wrapper = document.createElement("div");
@@ -50,6 +54,8 @@ if (fileInput) {
           removeBtn.style.alignItems = "center";
           removeBtn.style.justifyContent = "center";
           removeBtn.onclick = () => {
+            const index = selectedFiles.indexOf(file);
+            if (index !== -1) selectedFiles.splice(index, 1);
             wrapper.remove();
             if (imagePreview.children.length === 0) {
               previewWrapper.classList.add("hidden");
@@ -170,17 +176,15 @@ function submitForm(event) {
   submission.append("discord-id", discordId);
   submission.append("pack", pack);
 
-  const files = document.getElementById("file").files;
-
-  if (files.length > 0) {
+  if (selectedFiles.length > 0) {
     if (!previewConfirmed) {
       alert("Please confirm the image preview before submitting.");
       return;
     }
 
-    for (let i = 0; i < files.length; i++) {
-      submission.append("file", files[i]);
-    }
+    selectedFiles.forEach((file) => {
+      submission.append("file", file);
+    });
   }
 
   fetch("https://comissions-production.up.railway.app/submit", {
@@ -191,6 +195,7 @@ function submitForm(event) {
       if (!res.ok) throw new Error("Server responded with error");
       alert("Order submitted successfully!");
       form.reset();
+      selectedFiles = [];
       document.getElementById("image-preview-wrapper").classList.add("hidden");
       document.querySelector(".form-container").style.display = "none";
     })
