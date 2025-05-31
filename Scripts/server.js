@@ -1,12 +1,19 @@
+require("dotenv").config();
+
 const express = require("express");
 const multer = require("multer");
 const axios = require("axios");
+const cors = require("cors");
 const FormData = require("form-data");
 
 const app = express();
-const upload = multer();
+const upload = multer({ storage: multer.memoryStorage() });
 
-const WEBHOOK_URL = "YOUR_WEBHOOK_URL_HERE";
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
 
 app.post("/submit", upload.array("file"), async (req, res) => {
   try {
