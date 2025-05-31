@@ -187,7 +187,7 @@ function sendMessageToDiscord(message, file = null, filename = null) {
     formData.append("file", file, filename);
   }
 
-  fetch("http://localhost:3000/submit", {
+  fetch("https://comissions-production.up.railway.app/submit", {
     method: "POST",
     body: formData,
   })
