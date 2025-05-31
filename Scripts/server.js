@@ -33,6 +33,24 @@ app.post("/submit", upload.array("file"), async (req, res) => {
 
     const baseUsed = style === "Other" ? customBase || "Unspecified" : style;
 
+    const formData = new FormData();
+
+    let imageFieldsText = "*No images attached*";
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file, index) => {
+        formData.append(`files[${index}]`, file.buffer, {
+          filename: file.originalname,
+          contentType: file.mimetype,
+        });
+      });
+
+      const links = req.files.map(
+        (file, index) =>
+          `[Image ${index + 1}](attachment://${file.originalname})`
+      );
+      imageFieldsText = links.join("\n");
+    }
+
     const mainEmbed = {
       title: "🎨 New VRChat Avatar Commission Request",
       color: 0x00ffff,
@@ -58,30 +76,17 @@ app.post("/submit", upload.array("file"), async (req, res) => {
           inline: true,
         },
         { name: "🆔 Discord ID", value: `\`${discordId}\`` },
+        { name: "🖼️ Uploaded Images", value: imageFieldsText },
       ],
     };
 
-    const formData = new FormData();
-
-    if (req.files && req.files.length > 0) {
-      req.files.forEach((file, index) => {
-        formData.append(`files[${index}]`, file.buffer, {
-          filename: file.originalname,
-          contentType: file.mimetype,
-        });
-      });
+    if (req.files.length > 0) {
+      mainEmbed.image = {
+        url: `attachment://${req.files[0].originalname}`,
+      };
     }
 
-    const imageEmbeds = (req.files || []).map((file, index) => ({
-      title: `🖼️ Preview Image ${index + 1}`,
-      color: 0x00ffff,
-      image: { url: `attachment://${file.originalname}` },
-    }));
-
-    formData.append(
-      "payload_json",
-      JSON.stringify({ embeds: [mainEmbed, ...imageEmbeds] })
-    );
+    formData.append("payload_json", JSON.stringify({ embeds: [mainEmbed] }));
 
     await axios.post(WEBHOOK_URL, formData, {
       headers: formData.getHeaders(),
