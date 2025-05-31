@@ -238,7 +238,6 @@
               name="file"
               accept="image/*"
               multiple
-              onchange="handleImagePreview(this)"
             />
             <label for="file" class="btn upload-btn">Choose Images</label>
             <span id="file-name" class="file-name">No files chosen</span>
@@ -246,7 +245,7 @@
 
           <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
             <h4>Preview:</h4>
-            <div id="image-preview-list" class="image-preview-list"></div>
+            <div id="image-preview" class="image-preview-list"></div>
             <label class="checkbox-wrapper">
               <input
                 type="checkbox"

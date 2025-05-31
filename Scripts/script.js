@@ -7,18 +7,73 @@ if (fileInput) {
     const fileNameDisplay = document.getElementById("file-name");
     const previewConfirm = document.getElementById("preview-confirm");
 
-    if (fileInput.files && fileInput.files[0]) {
-      const file = fileInput.files[0];
-      fileNameDisplay.textContent = file.name;
+    if (fileInput.files && fileInput.files.length > 0) {
+      const currentCount = imagePreview.children.length;
+      const maxAllowed = 5;
+      const filesToAdd = [...fileInput.files].slice(
+        0,
+        maxAllowed - currentCount
+      );
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        imagePreview.src = e.target.result;
-        previewWrapper.classList.remove("hidden");
-        previewConfirm.checked = false;
-        previewConfirm.required = true;
-      };
-      reader.readAsDataURL(file);
+      fileNameDisplay.textContent = `${
+        imagePreview.children.length + filesToAdd.length
+      } file(s) selected`;
+
+      filesToAdd.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const wrapper = document.createElement("div");
+          wrapper.style.position = "relative";
+          wrapper.style.display = "inline-block";
+          wrapper.style.margin = "10px";
+
+          const img = document.createElement("img");
+          img.src = e.target.result;
+          img.alt = "Uploaded Preview";
+          img.style.maxWidth = "450px";
+          img.style.borderRadius = "8px";
+          img.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.2)";
+
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "✖";
+          removeBtn.style.position = "absolute";
+          removeBtn.style.top = "5px";
+          removeBtn.style.right = "5px";
+          removeBtn.style.background = "rgba(0,0,0,0.5)";
+          removeBtn.style.color = "#fff";
+          removeBtn.style.border = "none";
+          removeBtn.style.borderRadius = "50%";
+          removeBtn.style.cursor = "pointer";
+          removeBtn.style.width = "24px";
+          removeBtn.style.height = "24px";
+          removeBtn.style.display = "flex";
+          removeBtn.style.alignItems = "center";
+          removeBtn.style.justifyContent = "center";
+          removeBtn.onclick = () => {
+            wrapper.remove();
+            if (imagePreview.children.length === 0) {
+              previewWrapper.classList.add("hidden");
+              fileNameDisplay.textContent = "No file chosen";
+              previewConfirm.checked = false;
+              previewConfirm.required = false;
+              fileInput.value = "";
+            } else {
+              fileNameDisplay.textContent = `${imagePreview.children.length} file(s) selected`;
+            }
+          };
+
+          wrapper.appendChild(img);
+          wrapper.appendChild(removeBtn);
+          imagePreview.appendChild(wrapper);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      previewWrapper.classList.remove("hidden");
+      previewConfirm.checked = false;
+      previewConfirm.required = true;
+
+      fileInput.value = "";
     } else {
       fileNameDisplay.textContent = "No file chosen";
       previewWrapper.classList.add("hidden");
@@ -106,10 +161,9 @@ function submitForm(event) {
     return;
   }
 
-  const file = formData.get("file");
   const previewConfirmed = document.getElementById("preview-confirm").checked;
-
   const submission = new FormData();
+
   submission.append("name", name);
   submission.append("description", description);
   submission.append("style", style);
@@ -117,12 +171,17 @@ function submitForm(event) {
   submission.append("discord-id", discordId);
   submission.append("pack", pack);
 
-  if (file && file.size > 0) {
+  const files = document.getElementById("file").files;
+
+  if (files.length > 0) {
     if (!previewConfirmed) {
       alert("Please confirm the image preview before submitting.");
       return;
     }
-    submission.append("file", file);
+
+    for (let i = 0; i < files.length; i++) {
+      submission.append("file", files[i]);
+    }
   }
 
   fetch("https://comissions-production.up.railway.app/submit", {
