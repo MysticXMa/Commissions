@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCountdown();
 
-  // Prevent going back or refreshing during closure
   window.addEventListener("popstate", () => {
     if (new Date().getTime() > closeDate.getTime()) {
       history.pushState(null, "", window.location.href);
@@ -91,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Ensure overlay persists even if removed manually
   const blockerObserver = new MutationObserver(() => {
     if (!document.body.contains(overlay)) {
       document.body.appendChild(overlay);
@@ -101,6 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   blockerObserver.observe(document.body, { childList: true, subtree: true });
 
-  // Optional: force hiding custom base if page loads without "Other" selected
   handleAvatarBaseChange();
 });
+
+function generateRandomBuild() {
+  const random = Math.floor(Math.random() * 1_000_000)
+    .toString()
+    .padStart(6, "0");
+  return `v1.0.1-beta.3+build${random}`;
+}
+
+document.getElementById("versionDisplay").textContent = generateRandomBuild();
