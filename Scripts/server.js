@@ -35,7 +35,7 @@ app.post("/submit", upload.array("file"), async (req, res) => {
 
     const formData = new FormData();
 
-    let imageFieldsText = "*No images attached*";
+    // Attach files to the formData
     if (req.files && req.files.length > 0) {
       req.files.forEach((file, index) => {
         formData.append(`files[${index}]`, file.buffer, {
@@ -43,50 +43,53 @@ app.post("/submit", upload.array("file"), async (req, res) => {
           contentType: file.mimetype,
         });
       });
-
-      const links = req.files.map(
-        (file, index) =>
-          `[Image ${index + 1}](attachment://${file.originalname})`
-      );
-      imageFieldsText = links.join("\n");
     }
 
-    const mainEmbed = {
-      title: "🎨 New VRChat Avatar Commission Request",
-      color: 0x00ffff,
-      timestamp: new Date().toISOString(),
-      fields: [
-        { name: "👤 Character Name", value: `\`${name}\`` },
-        {
-          name: "📝 Description",
-          value:
-            description.length > 1024
-              ? description.substring(0, 1021) + "..."
-              : description,
-        },
-        { name: "🧍 Avatar Base", value: `\`${baseUsed}\``, inline: true },
-        {
-          name: "🧢 Clothing",
-          value: clothing ? `\`${clothing}\`` : "*Not specified*",
-          inline: true,
-        },
-        {
-          name: "📦 Selected Pack",
-          value: pack ? `\`${pack}\`` : "*Not selected*",
-          inline: true,
-        },
-        { name: "🆔 Discord ID", value: `\`${discordId}\`` },
-        { name: "🖼️ Uploaded Images", value: imageFieldsText },
-      ],
-    };
+    // Main info embed
+    const embeds = [
+      {
+        title: "🎨 New VRChat Avatar Commission Request",
+        color: 0x00ffff,
+        timestamp: new Date().toISOString(),
+        fields: [
+          { name: "👤 Character Name", value: `\`${name}\`` },
+          {
+            name: "📝 Description",
+            value:
+              description.length > 1024
+                ? description.substring(0, 1021) + "..."
+                : description,
+          },
+          { name: "🧍 Avatar Base", value: `\`${baseUsed}\``, inline: true },
+          {
+            name: "🧢 Clothing",
+            value: clothing ? `\`${clothing}\`` : "*Not specified*",
+            inline: true,
+          },
+          {
+            name: "📦 Selected Pack",
+            value: pack ? `\`${pack}\`` : "*Not selected*",
+            inline: true,
+          },
+          { name: "🆔 Discord ID", value: `\`${discordId}\`` },
+        ],
+      },
+    ];
 
-    if (req.files.length > 0) {
-      mainEmbed.image = {
-        url: `attachment://${req.files[0].originalname}`,
-      };
+    // Add each uploaded image as its own embed
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file, index) => {
+        embeds.push({
+          title: `📸 Image ${index + 1}`,
+          color: 0x00ffff,
+          image: {
+            url: `attachment://${file.originalname}`,
+          },
+        });
+      });
     }
 
-    formData.append("payload_json", JSON.stringify({ embeds: [mainEmbed] }));
+    formData.append("payload_json", JSON.stringify({ embeds }));
 
     await axios.post(WEBHOOK_URL, formData, {
       headers: formData.getHeaders(),
