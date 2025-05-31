@@ -82,7 +82,9 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       });
     }
 
-    const imageEmbeds = (req.files || []).map((file) => ({
+    const imageEmbeds = (req.files || []).map((file, index) => ({
+      title: `🖼️ Preview Image ${index + 1}`,
+      color: 0x00ffff,
       image: {
         url: `attachment://${file.originalname}`,
       },

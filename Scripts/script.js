@@ -56,7 +56,6 @@ if (fileInput) {
               fileNameDisplay.textContent = "No file chosen";
               previewConfirm.checked = false;
               previewConfirm.required = false;
-              fileInput.value = "";
             } else {
               fileNameDisplay.textContent = `${imagePreview.children.length} file(s) selected`;
             }
