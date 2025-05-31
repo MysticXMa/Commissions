@@ -35,7 +35,6 @@ app.post("/submit", upload.array("file"), async (req, res) => {
 
     const formData = new FormData();
 
-    // Attach files to the formData
     if (req.files && req.files.length > 0) {
       req.files.forEach((file, index) => {
         formData.append(`files[${index}]`, file.buffer, {
@@ -45,7 +44,6 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       });
     }
 
-    // Main info embed
     const embeds = [
       {
         title: "🎨 New VRChat Avatar Commission Request",
@@ -76,7 +74,6 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       },
     ];
 
-    // Add each uploaded image as its own embed
     if (req.files && req.files.length > 0) {
       req.files.forEach((file, index) => {
         embeds.push({
