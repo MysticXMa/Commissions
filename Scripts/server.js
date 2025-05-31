@@ -34,12 +34,15 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       req.files?.map((f) => f.originalname)
     );
 
+    // Check required fields
     if (!name || !description || !style || !discordId) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
+    // Determine which base was used
     const baseUsed = style === "Other" ? customBase || "Unspecified" : style;
 
+    // Build Discord embed
     const embed = {
       title: "📝 New Commission Submission",
       fields: [
@@ -54,15 +57,18 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       timestamp: new Date().toISOString(),
     };
 
+    // Create formData for Discord webhook
     const formData = new FormData();
     formData.append("payload_json", JSON.stringify({ embeds: [embed] }));
 
+    // Attach files (if any)
     if (req.files && req.files.length > 0) {
       req.files.forEach((file, i) => {
         formData.append(`files[${i}]`, file.buffer, file.originalname);
       });
     }
 
+    // Send to Discord
     await axios.post(WEBHOOK_URL, formData, {
       headers: formData.getHeaders(),
     });

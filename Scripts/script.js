@@ -27,30 +27,6 @@ if (fileInput) {
   });
 }
 
-function handleImagePreview(input) {
-  const previewWrapper = document.getElementById("image-preview-wrapper");
-  const previewList = document.getElementById("image-preview-list");
-  const fileName = document.getElementById("file-name");
-
-  previewList.innerHTML = "";
-  fileName.textContent = input.files.length + " file(s) selected";
-
-  if (input.files.length > 0) {
-    previewWrapper.classList.remove("hidden");
-  }
-
-  Array.from(input.files).forEach((file) => {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const img = document.createElement("img");
-      img.src = e.target.result;
-      img.classList.add("preview-image");
-      previewList.appendChild(img);
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
 function openForm(packName) {
   const formContainer = document.querySelector(".form-container");
   const clothingOptions = document.getElementById("clothing-options");
@@ -93,11 +69,11 @@ function submitForm(event) {
   const formData = new FormData(form);
 
   const description = formData.get("description");
-  const selectedPack = formData.get("pack");
   const name = formData.get("name");
   const style = formData.get("style");
   const clothing = formData.get("clothing") || "None";
   const discordId = formData.get("discord-id");
+  const pack = formData.get("pack");
 
   const curseWords = [
     "shit",
@@ -116,7 +92,6 @@ function submitForm(event) {
     "motherfucker",
   ];
   const urlPattern = /(https?:\/\/[^\s]+)/g;
-
   const isInappropriate = (text) =>
     urlPattern.test(text) ||
     curseWords.some((word) => new RegExp(`\\b${word}\\b`, "i").test(text)) ||
@@ -131,70 +106,34 @@ function submitForm(event) {
     return;
   }
 
-  const message = {
-    username: "Commissions Bot",
-    embeds: [
-      {
-        title: `New Order Submission`,
-        color: 15844367,
-        fields: [
-          { name: "Name", value: name || "N/A", inline: true },
-          { name: "Discord ID", value: discordId || "N/A", inline: true },
-          { name: "Avatar Base", value: style || "N/A", inline: true },
-          { name: "Clothing Options", value: clothing, inline: true },
-          { name: "Selected Pack", value: selectedPack || "N/A", inline: true },
-          { name: "Description", value: description || "N/A" },
-        ],
-        footer: {
-          text: "Mystic's VRChat Avatar Commissions",
-          icon_url: "https://example.com/logo.png",
-        },
-        timestamp: new Date().toISOString(),
-      },
-    ],
-  };
-
   const file = formData.get("file");
   const previewConfirmed = document.getElementById("preview-confirm").checked;
+
+  const submission = new FormData();
+  submission.append("name", name);
+  submission.append("description", description);
+  submission.append("style", style);
+  submission.append("clothing", clothing);
+  submission.append("discord-id", discordId);
+  submission.append("pack", pack);
 
   if (file && file.size > 0) {
     if (!previewConfirmed) {
       alert("Please confirm the image preview before submitting.");
       return;
     }
-
-    const fileType = file.type.split("/")[1];
-    if (["png", "jpeg", "jpg"].includes(fileType)) {
-      message.embeds[0].image = { url: "attachment://reference." + fileType };
-      message.embeds[0].fields.push({
-        name: "Reference Image",
-        value: "Attached below.",
-      });
-      sendMessageToDiscord(message, file, `reference.${fileType}`);
-    } else {
-      alert("Unsupported file type.");
-    }
-  } else {
-    sendMessageToDiscord(message);
-  }
-}
-
-function sendMessageToDiscord(message, file = null, filename = null) {
-  const formData = new FormData();
-  formData.append("payload_json", JSON.stringify(message));
-
-  if (file && filename) {
-    formData.append("file", file, filename);
+    submission.append("file", file);
   }
 
   fetch("https://comissions-production.up.railway.app/submit", {
     method: "POST",
-    body: formData,
+    body: submission,
   })
     .then((res) => {
       if (!res.ok) throw new Error("Server responded with error");
       alert("Order submitted successfully!");
-      document.getElementById("order-form").reset();
+      form.reset();
+      document.getElementById("image-preview-wrapper").classList.add("hidden");
       document.querySelector(".form-container").style.display = "none";
     })
     .catch((error) => {
@@ -224,6 +163,7 @@ function handleAvatarBaseChange() {
     "Taidum",
     "Regulus 3.0",
   ];
+
   if (basesWithClothing.includes(style)) {
     clothingOptions.classList.remove("hidden");
   } else {
@@ -261,12 +201,12 @@ function openDetails(avatar) {
     avatar6: {
       title: "Ara",
       img: "../avatars/66.png",
-      desc: "The avatar colors are stunning, and it gives off a badass vibe.",
+      desc: "The avatar colors are stunning and it gives off a badass vibe.",
     },
     avatar7: {
       title: "Cristal",
       img: "../avatars/77.png",
-      desc: "Is it a crystal or a gem? Nah, it’s just me trying to outshine everything around me. Sparkles included!",
+      desc: "Is it a crystal or a gem? Just me trying to outshine everything. Sparkles included!",
     },
   };
 
