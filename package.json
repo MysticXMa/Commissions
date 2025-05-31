@@ -6,5 +6,8 @@
     "express": "^5.1.0",
     "form-data": "^4.0.2",
     "multer": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node scripts/server.js"
   }
 }
