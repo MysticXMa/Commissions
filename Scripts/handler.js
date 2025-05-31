@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const countdownElement = document.getElementById("countdown");
   const overlay = document.getElementById("overlay-closed");
   const closeDate = new Date("May 28, 2025 23:59:59");
-  const reopenDate = new Date("June 22, 2025 00:00:00");
+  const reopenDate = new Date("May 1, 2025 00:00:00");
 
   function handleAvatarBaseChange() {
     if (baseSelect.value === "Other") {

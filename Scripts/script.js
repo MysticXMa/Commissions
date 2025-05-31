@@ -187,7 +187,7 @@ function sendMessageToDiscord(message, file = null, filename = null) {
     formData.append("file", file, filename);
   }
 
-  fetch("/submit", {
+  fetch("http://localhost:3000/submit", {
     method: "POST",
     body: formData,
   })
@@ -201,6 +201,34 @@ function sendMessageToDiscord(message, file = null, filename = null) {
       alert("Error submitting order.");
       console.error("Error:", error);
     });
+}
+
+function handleAvatarBaseChange() {
+  const style = document.getElementById("style").value;
+  const customBaseWrapper = document.getElementById("custom-base-wrapper");
+  const clothingOptions = document.getElementById("clothing-options");
+
+  if (style === "Other") {
+    customBaseWrapper.classList.remove("hidden");
+  } else {
+    customBaseWrapper.classList.add("hidden");
+  }
+
+  const basesWithClothing = [
+    "Regulus",
+    "Novabeast",
+    "Nardodragon",
+    "Protogen",
+    "Mayu",
+    "Rexouium",
+    "Taidum",
+    "Regulus 3.0",
+  ];
+  if (basesWithClothing.includes(style)) {
+    clothingOptions.classList.remove("hidden");
+  } else {
+    clothingOptions.classList.add("hidden");
+  }
 }
 
 function openDetails(avatar) {
