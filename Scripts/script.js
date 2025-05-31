@@ -2,16 +2,15 @@ const fileInput = document.getElementById("file");
 
 if (fileInput) {
   fileInput.addEventListener("change", function () {
-    const previewWrapper = document.getElementById("image-preview-wrapper"),
-      imagePreview = document.getElementById("image-preview"),
-      fileNameDisplay = document.getElementById("file-name"),
-      previewConfirm = document.getElementById("preview-confirm");
+    const previewWrapper = document.getElementById("image-preview-wrapper");
+    const imagePreview = document.getElementById("image-preview");
+    const fileNameDisplay = document.getElementById("file-name");
+    const previewConfirm = document.getElementById("preview-confirm");
 
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
       fileNameDisplay.textContent = file.name;
 
-      // Read and display the file
       const reader = new FileReader();
       reader.onload = (e) => {
         imagePreview.src = e.target.result;
@@ -59,25 +58,18 @@ function openForm(packName) {
 
   formContainer.style.display = "block";
 
-  // Show warning for high-tier packs
-  if (packName === "Ultimate Pack" || packName === "Celestial Pack") {
+  if (["Ultimate Pack", "Celestial Pack"].includes(packName)) {
     warningBox.classList.remove("hidden");
   } else {
     warningBox.classList.add("hidden");
   }
 
-  // Show clothing options for Premium or higher
-  if (
-    packName === "Premium Pack" ||
-    packName === "Ultimate Pack" ||
-    packName === "Celestial Pack"
-  ) {
+  if (["Premium Pack", "Ultimate Pack", "Celestial Pack"].includes(packName)) {
     clothingOptions.style.display = "block";
   } else {
     clothingOptions.style.display = "none";
   }
 
-  // Set form title
   let formTitle = document.getElementById("form-title");
   if (!formTitle) {
     formTitle = document.createElement("h2");
@@ -86,29 +78,26 @@ function openForm(packName) {
   }
   formTitle.innerText = `Order Form for ${packName}`;
 
-  // Set selected pack
   document.getElementById("selected-pack").value = packName;
 
-  // Smooth scroll to form
   window.scrollTo({
     top: formContainer.offsetTop,
     behavior: "smooth",
   });
 }
 
-const WEBHOOK_URL =
-  "https://discord.com/api/webhooks/1328015749138354247/4wKcq_jUMl_xIn1DLa4-73bEI6XnwKbQ1drgal4qdATo_h8vvsPOY-fdfA203iwfvppZ";
-
 function submitForm(event) {
   event.preventDefault();
-  const form = document.getElementById("order-form"),
-    formData = new FormData(form),
-    description = formData.get("description"),
-    selectedPack = formData.get("pack"),
-    name = formData.get("name"),
-    style = formData.get("style"),
-    clothing = formData.get("clothing") || "None",
-    discordId = formData.get("discord-id");
+
+  const form = document.getElementById("order-form");
+  const formData = new FormData(form);
+
+  const description = formData.get("description");
+  const selectedPack = formData.get("pack");
+  const name = formData.get("name");
+  const style = formData.get("style");
+  const clothing = formData.get("clothing") || "None";
+  const discordId = formData.get("discord-id");
 
   const curseWords = [
     "shit",
@@ -128,24 +117,17 @@ function submitForm(event) {
   ];
   const urlPattern = /(https?:\/\/[^\s]+)/g;
 
-  if (
-    urlPattern.test(description) ||
-    curseWords.some((curse) =>
-      new RegExp(`\\b${curse}\\b`, "i").test(description)
-    ) ||
-    description.includes("@")
-  ) {
-    alert("Inappropriate content detected.");
-    return;
-  }
+  const isInappropriate = (text) =>
+    urlPattern.test(text) ||
+    curseWords.some((word) => new RegExp(`\\b${word}\\b`, "i").test(text)) ||
+    text.includes("@");
 
   if (
-    curseWords.some((curse) => new RegExp(`\\b${curse}\\b`, "i").test(name)) ||
-    curseWords.some((curse) =>
-      new RegExp(`\\b${curse}\\b`, "i").test(discordId)
-    )
+    isInappropriate(description) ||
+    isInappropriate(name) ||
+    isInappropriate(discordId)
   ) {
-    alert("Inappropriate content detected in name or Discord ID.");
+    alert("Inappropriate content detected.");
     return;
   }
 
@@ -159,7 +141,7 @@ function submitForm(event) {
           { name: "Name", value: name || "N/A", inline: true },
           { name: "Discord ID", value: discordId || "N/A", inline: true },
           { name: "Avatar Base", value: style || "N/A", inline: true },
-          { name: "Clothing Options", value: clothing || "None", inline: true },
+          { name: "Clothing Options", value: clothing, inline: true },
           { name: "Selected Pack", value: selectedPack || "N/A", inline: true },
           { name: "Description", value: description || "N/A" },
         ],
@@ -181,21 +163,17 @@ function submitForm(event) {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const fileType = file.type.split("/")[1];
-      if (["png", "jpeg", "jpg"].includes(fileType)) {
-        message.embeds[0].image = { url: "attachment://reference." + fileType };
-        message.embeds[0].fields.push({
-          name: "Reference Image",
-          value: "Attached below.",
-        });
-        sendMessageToDiscord(message, file, `reference.${fileType}`);
-      } else {
-        alert("Unsupported file type.");
-      }
-    };
-    reader.readAsDataURL(file);
+    const fileType = file.type.split("/")[1];
+    if (["png", "jpeg", "jpg"].includes(fileType)) {
+      message.embeds[0].image = { url: "attachment://reference." + fileType };
+      message.embeds[0].fields.push({
+        name: "Reference Image",
+        value: "Attached below.",
+      });
+      sendMessageToDiscord(message, file, `reference.${fileType}`);
+    } else {
+      alert("Unsupported file type.");
+    }
   } else {
     sendMessageToDiscord(message);
   }
@@ -206,20 +184,18 @@ function sendMessageToDiscord(message, file = null, filename = null) {
   formData.append("payload_json", JSON.stringify(message));
 
   if (file && filename) {
-    const previewConfirmed = document.getElementById("preview-confirm").checked;
-    if (!previewConfirmed) {
-      alert("Please confirm the image preview before submitting.");
-      return;
-    }
     formData.append("file", file, filename);
   }
 
-  fetch(WEBHOOK_URL, { method: "POST", body: formData })
-    .then(() => {
+  fetch("/submit", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Server responded with error");
       alert("Order submitted successfully!");
       document.getElementById("order-form").reset();
-      const formContainer = document.querySelector(".form-container");
-      formContainer.style.display = "none";
+      document.querySelector(".form-container").style.display = "none";
     })
     .catch((error) => {
       alert("Error submitting order.");
@@ -287,6 +263,5 @@ function closeDetails() {
 }
 
 function cancelOrder() {
-  const formContainer = document.querySelector(".form-container");
-  formContainer.style.display = "none";
+  document.querySelector(".form-container").style.display = "none";
 }

@@ -136,7 +136,6 @@ a:hover {
   margin-bottom: 15px;
 }
 
-/* === Info Sections === */
 .about-me,
 .how-it-works,
 .testimonials {
@@ -151,7 +150,6 @@ a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Ultimate Pack - Blue Theme */
 .pricing-card.ultimate {
   background: linear-gradient(135deg, #e0f7fa, #80deea);
   border: 2px solid #4dd0e1;
@@ -159,7 +157,6 @@ a:hover {
   color: #333;
 }
 
-/* Celestial Pack - Amethyst with Stars */
 .pricing-card.celestial {
   background: linear-gradient(135deg, #e1a8f8, #8e44ad);
   border: 2px solid #7d3c98;
