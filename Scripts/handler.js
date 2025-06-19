@@ -3,8 +3,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const customBaseWrapper = document.getElementById("custom-base-wrapper");
   const countdownElement = document.getElementById("countdown");
   const overlay = document.getElementById("overlay-closed");
-  const closeDate = new Date("May 28, 2025 23:59:59");
-  const reopenDate = new Date("June 22, 2025 00:00:00");
+
+  const forceOpen = true;
+
+  const closedPeriods = [
+    {
+      name: "Summer Break",
+      start: new Date("May 28, 2025 23:59:59"),
+      end: new Date("July 31, 2025 00:00:00"),
+    },
+    {
+      name: "Winter Break",
+      start: new Date("December 20, 2025 00:00:00"),
+      end: new Date("January 5, 2026 00:00:00"),
+    },
+    {
+      name: "Spring Break",
+      start: new Date("March 15, 2025 00:00:00"),
+      end: new Date("March 22, 2025 00:00:00"),
+    },
+  ];
 
   function handleAvatarBaseChange() {
     if (baseSelect.value === "Other") {
@@ -28,63 +46,104 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.add("hidden");
   }
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = closeDate.getTime() - now;
-
-    if (distance <= 0) {
-      countdownElement.textContent = "Commissions are now closed.";
-      blockInteraction();
-      updateOverlayTimer();
-    } else {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
+  function getCurrentClosedPeriod() {
+    if (forceOpen) return null;
+    const now = new Date();
+    return closedPeriods.find(
+      (period) => now >= period.start && now <= period.end
+    );
   }
 
-  function updateOverlayTimer() {
-    const now = new Date().getTime();
-    const distance = reopenDate.getTime() - now;
+  function getNextClosedPeriod() {
+    if (forceOpen) return null;
+    const now = new Date();
+    const upcoming = closedPeriods
+      .filter((period) => period.start > now)
+      .sort((a, b) => a.start - b.start);
+    return upcoming.length ? upcoming[0] : null;
+  }
 
-    if (distance <= 0) {
-      overlay.querySelector(".overlay-content").innerHTML =
-        "✅ <strong>Commissions are now open!</strong>";
+  function updateCountdown() {
+    if (forceOpen) {
       allowInteraction();
+      countdownElement.textContent = "Commissions are open (Forced Open Mode).";
+      overlay.querySelector(".overlay-content").innerHTML = "";
+      return;
+    }
+
+    const now = new Date();
+
+    const currentClosed = getCurrentClosedPeriod();
+
+    if (currentClosed) {
+      const distance = currentClosed.end.getTime() - now.getTime();
+
+      if (distance <= 0) {
+        countdownElement.textContent = "Commissions are now open!";
+        allowInteraction();
+      } else {
+        blockInteraction();
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.textContent = `Closed for ${currentClosed.name}. Reopens in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        overlay.querySelector(
+          ".overlay-content"
+        ).innerHTML = `❌ <strong>Commissions Closed for ${currentClosed.name}</strong><br><br>🔓 Reopens in: <strong>${days}d ${hours}h ${minutes}m ${seconds}s</strong>`;
+      }
     } else {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      overlay.querySelector(
-        ".overlay-content"
-      ).innerHTML = `❌ <strong>Commissions Closed for Summer</strong><br><br>🔓 Reopens in: <strong>${days}d ${hours}h ${minutes}m ${seconds}s</strong>`;
+      allowInteraction();
+
+      const nextClosed = getNextClosedPeriod();
+
+      if (nextClosed) {
+        const distance = nextClosed.start.getTime() - now.getTime();
+
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          countdownElement.textContent = `Open now. Next closure (${nextClosed.name}) starts in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+          overlay.querySelector(".overlay-content").innerHTML = "";
+        } else {
+          countdownElement.textContent = "Open now.";
+          overlay.querySelector(".overlay-content").innerHTML = "";
+        }
+      } else {
+        countdownElement.textContent = "Commissions are open.";
+        overlay.querySelector(".overlay-content").innerHTML = "";
+      }
     }
   }
 
   setInterval(() => {
     updateCountdown();
-    if (new Date().getTime() > closeDate.getTime()) {
-      updateOverlayTimer();
-    }
   }, 1000);
 
   updateCountdown();
 
   window.addEventListener("popstate", () => {
-    if (new Date().getTime() > closeDate.getTime()) {
+    const currentClosed = getCurrentClosedPeriod();
+    if (currentClosed) {
       history.pushState(null, "", window.location.href);
     }
   });
 
   window.addEventListener("beforeunload", (e) => {
-    if (new Date().getTime() > closeDate.getTime()) {
+    const currentClosed = getCurrentClosedPeriod();
+    if (currentClosed) {
       e.preventDefault();
       e.returnValue = "";
     }
