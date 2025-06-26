@@ -239,37 +239,47 @@ function openDetails(avatar) {
     avatar1: {
       title: "Erolic",
       img: "../avatars/11.png",
-      desc: "A blend between Erolis and its own unique style.",
+      desc: "A fusion of Erolis with a twist of originality and flair.",
     },
     avatar2: {
       title: "Erolis",
       img: "../avatars/22.png",
-      desc: "My most loved avatar and the one I currently use.",
+      desc: "My signature avatar—beloved and currently in use.",
     },
     avatar3: {
       title: "Mistic",
       img: "../avatars/33.png",
-      desc: "My first-ever avatar!",
+      desc: "The very first avatar I ever created. Where it all began.",
     },
     avatar4: {
       title: "Null",
       img: "../avatars/44.png",
-      desc: "A special avatar I made as a gift for my boyfriend.",
+      desc: "A meaningful creation that holds a special place in my journey.",
     },
     avatar5: {
       title: "Loufy",
       img: "../avatars/55.png",
-      desc: "My first finished commission.",
+      desc: "The first commission I fully brought to life—simple but proud.",
     },
     avatar6: {
       title: "Ara",
       img: "../avatars/66.png",
-      desc: "The avatar colors are stunning and it gives off a badass vibe.",
+      desc: "Striking colors and a bold presence—an avatar with attitude.",
     },
     avatar7: {
       title: "Cristal",
       img: "../avatars/77.png",
-      desc: "Is it a crystal or a gem? Just me trying to outshine everything. Sparkles included!",
+      desc: "A sparkling gem of personality, designed to steal the spotlight.",
+    },
+    avatar8: {
+      title: "Stas",
+      img: "../avatars/88.jpg",
+      desc: "A stealthy feline warrior, sworn to protect the city in silence.",
+    },
+    avatar9: {
+      title: "Kenith",
+      img: "../avatars/99.png",
+      desc: "A mysterious purple dragon with a sharp mind—and maybe a fiery side too.",
     },
   };
 
