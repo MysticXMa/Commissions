@@ -313,5 +313,33 @@
     <script src="Scripts/script.js" defer></script>
     <script src="Scripts/handler.js" defer></script>
     <div class="version" id="versionDisplay"></div>
+
+    <!-- Submission overlay -->
+    <div id="submission-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        ⏳ Submitting your commission request... Please wait.
+      </div>
+    </div>
+
+    <!-- Success popup -->
+    <div id="submission-success" class="overlay hidden">
+      <div class="overlay-content">
+        ✅ <strong>Submission Successful!</strong><br /><br />
+        Thank you! I’ll reach out via Discord as soon as possible.
+        <br /><br />
+        <button class="btn" onclick="closeSuccess()">Close</button>
+      </div>
+    </div>
+
+    <!-- Universal Custom Modal -->
+    <div id="custom-modal" class="overlay hidden">
+      <div class="overlay-content">
+        <div id="modal-message">⚠️ Default message</div>
+        <div id="modal-buttons" style="margin-top: 20px">
+          <button class="btn" id="modal-confirm">OK</button>
+          <button class="btn hidden" id="modal-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

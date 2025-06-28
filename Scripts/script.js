@@ -101,9 +101,11 @@ function openForm(packName) {
   }
 
   if (["Premium Pack", "Ultimate Pack", "Celestial Pack"].includes(packName)) {
+    clothingOptions.classList.remove("hidden");
     clothingOptions.style.display = "block";
   } else {
     clothingOptions.style.display = "none";
+    customBaseWrapper.classList.add("hidden");
   }
 
   let formTitle = document.getElementById("form-title");
@@ -122,7 +124,7 @@ function openForm(packName) {
   });
 }
 
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
 
   const form = document.getElementById("order-form");
@@ -162,13 +164,38 @@ function submitForm(event) {
     isInappropriate(name) ||
     isInappropriate(discordId)
   ) {
-    alert("Inappropriate content detected.");
+    await showModal({
+      message:
+        "🚫 Inappropriate content detected. Please remove any profanity or links.",
+      confirmText: "Understood",
+    });
     return;
   }
 
   const previewConfirmed = document.getElementById("preview-confirm").checked;
-  const submission = new FormData();
+  if (selectedFiles.length > 0 && !previewConfirmed) {
+    await showModal({
+      message: "📷 Please confirm the image preview before submitting.",
+      confirmText: "Okay",
+    });
+    return;
+  }
 
+  const highTierPacks = ["Ultimate Pack", "Celestial Pack"];
+  if (highTierPacks.includes(pack)) {
+    const confirm = await showModal({
+      message: `⚠️ You are ordering a high-tier commission with advanced features.\nAre you sure you want to continue?`,
+      confirmText: "Yes, continue",
+      cancelText: "Cancel",
+    });
+
+    if (!confirm) return;
+  }
+
+  document.querySelector(".submit").disabled = true;
+  document.getElementById("submission-overlay").classList.remove("hidden");
+
+  const submission = new FormData();
   submission.append("name", name);
   submission.append("description", description);
   submission.append("style", style);
@@ -177,32 +204,81 @@ function submitForm(event) {
   submission.append("pack", pack);
 
   if (selectedFiles.length > 0) {
-    if (!previewConfirmed) {
-      alert("Please confirm the image preview before submitting.");
-      return;
-    }
-
     selectedFiles.forEach((file) => {
       submission.append("file", file);
     });
   }
 
-  fetch("https://comissions-production.up.railway.app/submit", {
-    method: "POST",
-    body: submission,
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error("Server responded with error");
-      alert("Order submitted successfully!");
-      form.reset();
-      selectedFiles = [];
-      document.getElementById("image-preview-wrapper").classList.add("hidden");
-      document.querySelector(".form-container").style.display = "none";
-    })
-    .catch((error) => {
-      alert("Error submitting order.");
-      console.error("Error:", error);
+  try {
+    const res = await fetch(
+      "https://comissions-production.up.railway.app/submit",
+      {
+        method: "POST",
+        body: submission,
+      }
+    );
+
+    if (!res.ok) throw new Error("Server responded with error");
+
+    form.reset();
+    selectedFiles = [];
+    document.getElementById("image-preview-wrapper").classList.add("hidden");
+    document.querySelector(".form-container").style.display = "none";
+    document.getElementById("premium-warning").classList.add("hidden");
+    document.getElementById("submission-overlay").classList.add("hidden");
+    document.getElementById("submission-success").classList.remove("hidden");
+  } catch (error) {
+    document.getElementById("submission-overlay").classList.add("hidden");
+    await showModal({
+      message:
+        "❌ An error occurred while submitting your order. Please try again later.",
+      confirmText: "Okay",
     });
+    console.error("Error:", error);
+  } finally {
+    document.querySelector(".submit").disabled = false;
+  }
+}
+
+function showModal({ message, confirmText = "OK", cancelText, type = "info" }) {
+  return new Promise((resolve) => {
+    const modal = document.getElementById("custom-modal");
+    const messageBox = document.getElementById("modal-message");
+    const confirmBtn = document.getElementById("modal-confirm");
+    const cancelBtn = document.getElementById("modal-cancel");
+
+    messageBox.innerHTML = message;
+    confirmBtn.textContent = confirmText;
+
+    if (cancelText) {
+      cancelBtn.textContent = cancelText;
+      cancelBtn.classList.remove("hidden");
+    } else {
+      cancelBtn.classList.add("hidden");
+    }
+
+    modal.classList.remove("hidden");
+
+    const cleanup = () => {
+      confirmBtn.onclick = null;
+      cancelBtn.onclick = null;
+      modal.classList.add("hidden");
+    };
+
+    confirmBtn.onclick = () => {
+      cleanup();
+      resolve(true);
+    };
+
+    cancelBtn.onclick = () => {
+      cleanup();
+      resolve(false);
+    };
+  });
+}
+
+function closeSuccess() {
+  document.getElementById("submission-success").classList.add("hidden");
 }
 
 function handleAvatarBaseChange() {
@@ -219,12 +295,13 @@ function handleAvatarBaseChange() {
   const basesWithClothing = [
     "Regulus",
     "Novabeast",
-    "Nardodragon",
+    "Nardoragon",
     "Protogen",
     "Mayu",
     "Rexouium",
     "Taidum",
     "Regulus 3.0",
+    "Other",
   ];
 
   if (basesWithClothing.includes(style)) {
@@ -305,4 +382,5 @@ function closeDetails() {
 
 function cancelOrder() {
   document.querySelector(".form-container").style.display = "none";
+  document.getElementById("premium-warning").classList.add("hidden");
 }
