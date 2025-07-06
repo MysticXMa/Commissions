@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const countdownElement = document.getElementById("countdown");
   const overlay = document.getElementById("overlay-closed");
 
-  const forceOpen = true;
+  const forceOpen = false;
 
   const closedPeriods = [
     {
       name: "Summer Break",
       start: new Date("May 28, 2025 23:59:59"),
-      end: new Date("July 31, 2025 00:00:00"),
+      end: new Date("July 1, 2025 00:00:00"),
     },
     {
       name: "Winter Break",
