@@ -24,6 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 
 const WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
 
+if (!WEBHOOK_URL) {
+  console.error(
+    "❌ DISCORD_WEBHOOK environment variable is missing. Server cannot start."
+  );
+  process.exit(1);
+}
+
 app.post("/submit", upload.array("file"), async (req, res) => {
   try {
     const {
