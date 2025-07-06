@@ -210,13 +210,10 @@ async function submitForm(event) {
   }
 
   try {
-    const res = await fetch(
-      "https://comissions-production.up.railway.app/submit",
-      {
-        method: "POST",
-        body: submission,
-      }
-    );
+    const res = await fetch("https://commissions-1e9a.onrender.com/submit", {
+      method: "POST",
+      body: submission,
+    });
 
     if (!res.ok) throw new Error("Server responded with error");
 
