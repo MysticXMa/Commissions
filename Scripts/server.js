@@ -9,14 +9,7 @@ const FormData = require("form-data");
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
-app.use(
-  cors({
-    origin: ["https://mystic-vr-avatar-form.netlify.app"],
-    methods: ["POST", "GET"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

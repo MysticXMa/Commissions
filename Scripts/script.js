@@ -91,7 +91,6 @@ function openForm(packName) {
   const formContainer = document.querySelector(".form-container");
   const clothingOptions = document.getElementById("clothing-options");
   const warningBox = document.getElementById("premium-warning");
-  const customBaseWrapper = document.getElementById("customBaseWrapper");
 
   formContainer.style.display = "block";
 
@@ -106,7 +105,6 @@ function openForm(packName) {
     clothingOptions.style.display = "block";
   } else {
     clothingOptions.style.display = "none";
-    customBaseWrapper.classList.add("hidden");
   }
 
   let formTitle = document.getElementById("form-title");
@@ -284,28 +282,32 @@ function handleAvatarBaseChange() {
   const customBaseWrapper = document.getElementById("customBaseWrapper");
   const clothingOptions = document.getElementById("clothing-options");
 
-  if (style === "Other") {
-    customBaseWrapper.classList.remove("hidden");
-  } else {
-    customBaseWrapper.classList.add("hidden");
+  if (customBaseWrapper) {
+    if (style === "Other") {
+      customBaseWrapper.classList.remove("hidden");
+    } else {
+      customBaseWrapper.classList.add("hidden");
+    }
   }
 
-  const basesWithClothing = [
-    "Regulus",
-    "Novabeast",
-    "Nardoragon",
-    "Protogen",
-    "Mayu",
-    "Rexouium",
-    "Taidum",
-    "Regulus 3.0",
-    "Other",
-  ];
+  if (clothingOptions) {
+    const basesWithClothing = [
+      "Regulus",
+      "Novabeast",
+      "Nardoragon",
+      "Protogen",
+      "Mayu",
+      "Rexouium",
+      "Taidum",
+      "Regulus 3.0",
+      "Other",
+    ];
 
-  if (basesWithClothing.includes(style)) {
-    clothingOptions.classList.remove("hidden");
-  } else {
-    clothingOptions.classList.add("hidden");
+    if (basesWithClothing.includes(style)) {
+      clothingOptions.classList.remove("hidden");
+    } else {
+      clothingOptions.classList.add("hidden");
+    }
   }
 }
 

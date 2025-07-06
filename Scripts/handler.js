@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const baseSelect = document.getElementById("style");
-  const customBaseWrapper = document.getElementById("custom-base-wrapper");
   const countdownElement = document.getElementById("countdown");
   const overlay = document.getElementById("overlay-closed");
 
@@ -23,17 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       end: new Date("March 22, 2025 00:00:00"),
     },
   ];
-
-  function handleAvatarBaseChange() {
-    if (baseSelect.value === "Other") {
-      customBaseWrapper.classList.remove("hidden");
-    } else {
-      customBaseWrapper.classList.add("hidden");
-      document.getElementById("custom-base").value = "";
-    }
-  }
-
-  baseSelect.addEventListener("change", handleAvatarBaseChange);
 
   function blockInteraction() {
     document.body.style.pointerEvents = "none";
