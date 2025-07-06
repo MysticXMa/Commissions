@@ -91,6 +91,7 @@ function openForm(packName) {
   const formContainer = document.querySelector(".form-container");
   const clothingOptions = document.getElementById("clothing-options");
   const warningBox = document.getElementById("premium-warning");
+  const customBaseWrapper = document.getElementById("customBaseWrapper");
 
   formContainer.style.display = "block";
 
@@ -280,7 +281,7 @@ function closeSuccess() {
 
 function handleAvatarBaseChange() {
   const style = document.getElementById("style").value;
-  const customBaseWrapper = document.getElementById("custom-base-wrapper");
+  const customBaseWrapper = document.getElementById("customBaseWrapper");
   const clothingOptions = document.getElementById("clothing-options");
 
   if (style === "Other") {
