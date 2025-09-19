@@ -91,6 +91,8 @@ function openForm(packName) {
   const formContainer = document.querySelector(".form-container");
   const clothingOptions = document.getElementById("clothing-options");
   const warningBox = document.getElementById("premium-warning");
+  const clothingField = document.getElementById("clothing");
+  const styleField = document.getElementById("style");
 
   formContainer.style.display = "block";
 
@@ -105,6 +107,7 @@ function openForm(packName) {
     clothingOptions.style.display = "block";
   } else {
     clothingOptions.style.display = "none";
+    if (clothingField) clothingField.value = "None";
   }
 
   let formTitle = document.getElementById("form-title");
@@ -116,6 +119,11 @@ function openForm(packName) {
   formTitle.innerText = `Order Form for ${packName}`;
 
   document.getElementById("selected-pack").value = packName;
+
+  if (styleField && styleField.value === "Unspecified") {
+    styleField.value = "Regulus";
+    handleAvatarBaseChange();
+  }
 
   window.scrollTo({
     top: formContainer.offsetTop,
@@ -135,6 +143,12 @@ async function submitForm(event) {
   const clothing = formData.get("clothing") || "None";
   const discordId = formData.get("discord-id");
   const pack = formData.get("pack");
+
+  let baseToSend = style;
+  if (style === "Other") {
+    const customBaseInput = document.getElementById("custom-base").value.trim();
+    baseToSend = customBaseInput !== "" ? customBaseInput : "None";
+  }
 
   const curseWords = [
     "shit",
@@ -197,7 +211,7 @@ async function submitForm(event) {
   const submission = new FormData();
   submission.append("name", name);
   submission.append("description", description);
-  submission.append("style", style);
+  submission.append("style", baseToSend);
   submission.append("clothing", clothing);
   submission.append("discord-id", discordId);
   submission.append("pack", pack);
@@ -278,9 +292,11 @@ function closeSuccess() {
 }
 
 function handleAvatarBaseChange() {
-  const style = document.getElementById("style").value;
+  const styleField = document.getElementById("style");
+  const style = styleField.value;
   const customBaseWrapper = document.getElementById("customBaseWrapper");
   const clothingOptions = document.getElementById("clothing-options");
+  const clothingField = document.getElementById("clothing");
 
   if (customBaseWrapper) {
     if (style === "Other") {
@@ -290,23 +306,24 @@ function handleAvatarBaseChange() {
     }
   }
 
-  if (clothingOptions) {
-    const basesWithClothing = [
-      "Regulus",
-      "Novabeast",
-      "Nardoragon",
-      "Protogen",
-      "Mayu",
-      "Rexouium",
-      "Taidum",
-      "Regulus 3.0",
-      "Other",
-    ];
+  const basesWithClothing = [
+    "Regulus",
+    "Novabeast",
+    "Nardoragon",
+    "Protogen",
+    "Mayu",
+    "Rexouium",
+    "Taidum",
+    "Regulus 3.0",
+    "Other",
+  ];
 
+  if (clothingOptions) {
     if (basesWithClothing.includes(style)) {
       clothingOptions.classList.remove("hidden");
     } else {
       clothingOptions.classList.add("hidden");
+      if (clothingField) clothingField.value = "None";
     }
   }
 }

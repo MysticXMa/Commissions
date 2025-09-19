@@ -47,7 +47,12 @@ app.post("/submit", upload.array("file"), async (req, res) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    const baseUsed = style === "Other" ? customBase || "Unspecified" : style;
+    const baseUsed =
+      style === "Other"
+        ? customBase && customBase.trim() !== ""
+          ? customBase.trim()
+          : "None"
+        : style;
 
     const formData = new FormData();
 
