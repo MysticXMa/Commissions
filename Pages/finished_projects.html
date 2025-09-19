@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,73 +7,85 @@
     <link rel="stylesheet" href="../finished.css" />
     <link rel="stylesheet" href="../style.css" />
   </head>
+
   <body>
     <header>
-      <h1>Mystic's Finished VRChat Avatars</h1>
-      <a href="../index.html" class="back-button">← Back to Main Page</a>
+      <h1><b style="color: #7bdfe1">Mystic's</b> Finished VRChat Avatars</h1>
+      <a
+        href="../index.html"
+        class="back-button nav-link"
+        role="link"
+        aria-label="Back to the main page"
+        >← Back to Main Page</a
+      >
     </header>
 
     <div class="gallery-container">
+      <!-- Regulus Group -->
       <div class="avatar-group">
         <h2 class="group-title">Regulus</h2>
         <div class="gallery">
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar1')">
             <img src="../avatars/1.png" alt="Avatar 1 - Erolic" />
             <p>Erolic</p>
           </div>
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar3')">
             <img src="../avatars/3.png" alt="Avatar 3 - Mistic" />
             <p>Mistic</p>
           </div>
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar5')">
             <img src="../avatars/5.png" alt="Avatar 5 - Loufy" />
             <p>Loufy</p>
           </div>
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar6')">
             <img src="../avatars/6.png" alt="Avatar 6 - Ara" />
             <p>Ara</p>
           </div>
         </div>
       </div>
 
+      <!-- Regulus 3.0 Group -->
       <div class="avatar-group">
         <h2 class="group-title">Regulus 3.0 (Mayu X Regulus)</h2>
         <div class="gallery">
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar2')">
             <img src="../avatars/2.png" alt="Avatar 2 - Erolis" />
             <p>Erolis</p>
           </div>
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar7')">
             <img src="../avatars/7.png" alt="Avatar 7 - Cristal" />
             <p>Cristal</p>
           </div>
         </div>
       </div>
 
+      <!-- Mayu Avatars -->
       <div class="avatar-group">
         <h2 class="group-title">Mayu Avatars</h2>
         <div class="gallery">
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar8')">
             <img src="../avatars/8.png" alt="Avatar 8 - Stas" />
             <p>Stas</p>
           </div>
         </div>
       </div>
 
+      <!-- Novabeast Group -->
       <div class="avatar-group">
         <h2 class="group-title">Novabeast</h2>
         <div class="gallery">
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar9')">
             <img src="../avatars/9.png" alt="Avatar 9 - Kenith" />
             <p>Kenith</p>
           </div>
         </div>
       </div>
 
+      <!-- Nardodragon Group -->
       <div class="avatar-group">
         <h2 class="group-title">Nardodragon</h2>
         <div class="gallery">
-          <div class="avatar-card">
+          <div class="avatar-card" onclick="openDetails('avatar4')">
             <img src="../avatars/4.png" alt="Avatar 4 - Null" />
             <p>Null</p>
           </div>
@@ -81,13 +93,32 @@
       </div>
     </div>
 
-    <div id="avatar-details" class="modal">
+    <!-- Modal for details -->
+    <div
+      id="avatar-details"
+      class="modal"
+      style="display: none"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="avatar-title"
+      aria-describedby="avatar-desc"
+    >
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span
+          class="close"
+          onclick="closeDetails()"
+          aria-label="Close avatar details"
+          tabindex="0"
+        >
+          &times;
+        </span>
         <h2 id="avatar-title">Avatar Name</h2>
+        <br />
         <img id="avatar-img" src="" alt="Avatar Image" />
         <p id="avatar-desc">Description will go here...</p>
       </div>
     </div>
+
+    <script src="../Scripts/script.js"></script>
   </body>
 </html>
