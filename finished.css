@@ -1,4 +1,3 @@
-/* Ensure the body takes up the full height */
 html,
 body {
   height: 100%;
@@ -7,68 +6,66 @@ body {
 }
 
 html {
-  background-color: #e4f3ff;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e4f3ff;
-  color: #ffffff;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #e0e0e0;
   text-align: center;
   scroll-behavior: smooth;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: fadeInBody 1s ease-in-out;
+  line-height: 1.8;
 }
 
-/* Fix for background color gap on zoom/scroll */
 body::after {
   content: "";
   display: block;
   flex-grow: 1;
-  background-color: #e4f3ff;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-/* Header styling */
 header {
-  background: rgba(28, 28, 28, 0.9);
+  background: rgba(18, 25, 32, 0.9);
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid rgba(123, 223, 225, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
-  animation: slideDown 0.6s ease;
 }
 
 header h1 {
   margin: 0;
   font-size: 24px;
-  color: #ffffff;
+  color: #7bdfe1;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(123, 223, 225, 0.3);
 }
 
 header .highlight {
-  color: #7bdfe1;
+  color: #ffffff;
 }
 
-/* Navigation link styles */
 .nav-link {
   color: #7bdfe1;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #5ac0c1;
+  color: #a0d2db;
 }
 
-/* Gallery container */
 .gallery-container {
   padding: 80px 20px;
   display: flex;
@@ -76,29 +73,26 @@ header .highlight {
   align-items: center;
   flex-grow: 1;
   width: 100%;
-  animation: fadeIn 1s ease-in;
-  background-color: #e4f3ff;
+  background: transparent;
 }
 
-/* Avatar group */
 .avatar-group {
   margin-bottom: 50px;
   width: 100%;
   max-width: 1400px;
   padding: 0 20px;
-  animation: fadeInUp 0.7s ease;
 }
 
 .group-title {
   font-size: 28px;
-  color: #56c4c5;
+  color: #7bdfe1;
   margin-bottom: 20px;
   text-align: left;
   border-left: 4px solid #7bdfe1;
   padding-left: 15px;
+  font-weight: 600;
 }
 
-/* Gallery grid */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -108,20 +102,19 @@ header .highlight {
   max-width: 1200px;
 }
 
-/* Avatar card */
 .avatar-card {
-  background: rgba(32, 32, 32, 0.8);
+  background: rgba(18, 25, 32, 0.8);
   padding: 15px;
   border-radius: 12px;
   transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   cursor: pointer;
   width: 100%;
   max-width: 250px;
-  color: #ffffff;
+  color: #e0e0e0;
   position: relative;
   backdrop-filter: blur(5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  animation: zoomIn 0.5s ease;
+  border: 1px solid rgba(123, 223, 225, 0.2);
 }
 
 .avatar-card img {
@@ -133,18 +126,18 @@ header .highlight {
 .avatar-card p {
   margin: 10px 0 0;
   font-size: 18px;
+  color: #e0e0e0;
 }
 
 .avatar-card:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(123, 223, 225, 0.4);
 }
 
 .avatar-card:hover img {
   animation: tiltRotate 5s infinite ease-in-out;
 }
 
-/* Modal styling */
 .modal {
   display: none;
   position: fixed;
@@ -167,16 +160,17 @@ header .highlight {
 }
 
 .modal-content {
-  background: rgba(27, 27, 27, 0.85);
+  background: rgba(18, 25, 32, 0.95);
   padding: 20px;
   border-radius: 12px;
   max-width: 600px;
   text-align: center;
   position: relative;
-  box-shadow: 0 0px 20px rgba(131, 131, 131, 0.479);
-  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
   animation: modalBounce 0.5s ease-out;
   transform: scale(1);
+  border: 1px solid rgba(123, 223, 225, 0.2);
 }
 
 .modal-content img {
@@ -185,92 +179,36 @@ header .highlight {
   transition: transform 0.3s ease-in-out;
 }
 
-/* Close button */
 .close {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 24px;
   cursor: pointer;
-  color: #ffffff;
+  color: #e0e0e0;
   transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .close:hover {
-  color: #ff4d4d;
+  color: #7bdfe1;
   transform: scale(1.2);
 }
 
-/* Call-to-action button */
 .cta-button {
   display: inline-block;
   background-color: #7bdfe1;
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
-  color: #1c1c1c;
-  font-weight: bold;
+  color: #0f2027;
+  font-weight: 600;
   margin-top: 15px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #5ac0c1;
+  background-color: #a0d2db;
   transform: scale(1.05);
-}
-
-/* Animations */
-@keyframes fadeInBody {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 @keyframes tiltRotate {
@@ -303,7 +241,6 @@ header .highlight {
   }
 }
 
-/* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);

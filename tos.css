@@ -83,13 +83,6 @@ ul {
   margin-bottom: 20px;
 }
 
-ul li {
-  margin-bottom: 12px;
-  font-size: 1.05rem;
-  color: #e0e0e0;
-  position: relative;
-}
-
 ul li:before {
   content: "•";
   color: #7bdfe1;
@@ -99,14 +92,11 @@ ul li:before {
   margin-left: -1em;
 }
 
-ul li ul {
+ul li {
   padding-left: 20px;
   margin-top: 10px;
-}
-
-ul li ul li {
-  font-size: 1rem;
-  color: #c0c0c0;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .footer {
