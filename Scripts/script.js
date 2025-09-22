@@ -375,6 +375,11 @@ function openDetails(avatar) {
       img: "../avatars/99.png",
       desc: "A mysterious purple dragon with a sharp mind—and maybe a fiery side too.",
     },
+    avatar10: {
+      title: "Blaze",
+      img: "../avatars/111.png",
+      desc: "Blue and white creature. He's very fluffy too!",
+    },
   };
 
   const avatarInfo = avatarData[avatar];
