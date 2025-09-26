@@ -610,6 +610,94 @@ footer {
   background: #a0d2db;
 }
 
+.useful-links-box {
+  background: rgba(18, 25, 32, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(123, 223, 225, 0.2);
+  color: #e0e0e0;
+}
+
+.useful-links-box h3 {
+  color: #7bdfe1;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.useful-links-box p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.useful-links-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.useful-links-box ul li {
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.useful-links-box ul li:before {
+  content: "🔗";
+  position: absolute;
+  left: 0;
+  font-size: 1.1rem;
+}
+
+.useful-links-box ul li a {
+  color: #7bdfe1;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.useful-links-box ul li a:hover {
+  color: #a0d2db;
+  transform: translateX(5px);
+  animation: hoverPop 0.3s ease forwards;
+}
+
+.useful-links-box .note {
+  background: rgba(123, 223, 225, 0.15);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #7bdfe1;
+  margin-top: 20px;
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+.useful-links-box {
+  animation-delay: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .useful-links-box {
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .useful-links-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .useful-links-box ul li {
+    padding-left: 20px;
+  }
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
