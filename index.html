@@ -1,30 +1,37 @@
-<!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mystic's Avatar Commissions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <header>
       <div class="header-container">
-        <h1>
-          <span class="highlight">Mystic's</span> VRChat Avatar Commissions
-        </h1>
-        <a href="Pages/finished_projects.html" class="nav-link"
-          >View My Finished Work</a
-        >
+        <h1>Mystic's Avatar Commissions</h1>
+        <nav>
+          <a href="Pages/finished_projects.html" class="nav-link"
+            >View My Finished Work</a
+          >
+        </nav>
       </div>
     </header>
 
     <main class="container">
-      <!-- INTRO -->
       <section class="countdown">
         <div id="countdown-box">
           ⏳ <strong>Commissions close in:</strong>
-          <span id="countdown"></span>
+          <span id="countdown">Loading...</span>
         </div>
       </section>
 
@@ -40,118 +47,119 @@
         </p>
       </section>
 
-      <!-- ABOUT ME -->
       <section class="about-me">
-        <h2>👋 About Me</h2>
+        <div class="section-title">👋 About Me</div>
         <p>
-          Hey there! I'm Mystic. I specialize in furry avatars with bold
-          personality, clean visuals, and immersive VFX.
+          Hey there! I'm Mystic. I specialize in creating expressive furry
+          avatars that combine bold personality with clean visuals and immersive
+          VFX. My goal is to make your VRChat experience feel truly unique.
         </p>
       </section>
 
-      <!-- HOW IT WORKS -->
       <section class="how-it-works">
-        <h2>🛠️ How It Works</h2>
+        <div class="section-title">🛠️ How It Works</div>
         <ol>
           <li>
-            <strong>Fill out the form:</strong> Add references and details.
+            <strong>Fill out the form:</strong> Add your references, base
+            preference, and details.
           </li>
-          <li><strong>Order confirmed:</strong> I’ll DM you on Discord.</li>
-          <li><strong>Progress updates:</strong> You'll stay in the loop.</li>
-          <li><strong>Final delivery:</strong> Avatar delivered your way.</li>
+          <li>
+            <strong>Order confirmed:</strong> I’ll DM you on Discord to discuss
+            the specifics.
+          </li>
+          <li>
+            <strong>Progress updates:</strong> You'll receive screenshots to
+            ensure it's looking perfect.
+          </li>
+          <li>
+            <strong>Final delivery:</strong> You get the files and setup
+            instructions!
+          </li>
         </ol>
       </section>
 
       <div class="warning">
-        ⚠️ <strong>Note:</strong> Every commission pack comes with setup
-        instructions to help you get started quickly. You'll receive a
-        well-organized folder and easy-to-follow steps tailored to your order.
+        ⚠️ <strong>Note:</strong> Every commission pack comes with a detailed
+        text guide. You'll receive a well-organized folder and easy-to-follow
+        steps tailored to your specific order.
       </div>
 
-      <!-- PRICING -->
       <section class="pricing-section">
-        <h2>🌟 Choose Your Commission Tier</h2>
+        <div class="section-title">🌟 Choose Your Tier</div>
         <div class="pricing-grid">
-          <!-- BASIC -->
           <div class="pricing-card basic">
             <h3>Basic Pack</h3>
-            <p>🖼️ For concept art or static previews. Not VRChat-ready.</p>
+            <div class="price">5€</div>
+            <p>
+              For concept art or static previews.
+              <strong>Not VRChat-ready.</strong>
+            </p>
             <ul>
               <li>🕒 1-day delivery</li>
               <li>🎨 Basic retexture (flat image)</li>
               <li>🖼️ PNG/JPG/JPEG preview only</li>
               <li>🗂️ Organized folder + setup instructions</li>
             </ul>
-            <div class="price">5€</div>
             <button onclick="openForm('Basic Pack')" class="btn">
               Order Now
             </button>
           </div>
 
-          <!-- STARTER -->
           <div class="pricing-card starter">
             <h3>Starter Pack</h3>
-            <p>
-              🎨 Includes everything from Basic Pack + VRChat starter files.
-            </p>
+            <div class="price">10€</div>
+            <p>Includes everything from Basic + VRChat starter files.</p>
             <ul>
               <li>🕒 1-2 day delivery</li>
-              <li>📁 SPP + Blender file</li>
+              <li>📁 SPP + Blender file included</li>
               <li>🎨 Retexture (Audiolink optional)</li>
             </ul>
-            <div class="price">10€</div>
             <button onclick="openForm('Starter Pack')" class="btn">
               Order Now
             </button>
           </div>
 
-          <!-- PREMIUM -->
           <div class="pricing-card premium">
             <h3>Premium Pack</h3>
-            <p>👕 Includes everything from Starter Pack + full VRChat setup.</p>
+            <div class="price">20€</div>
+            <p>Full VRChat setup with custom clothing.</p>
             <ul>
               <li>🕒 2-5 day delivery</li>
               <li>👕 Custom clothing options</li>
-              <li>🛠️ PC + Quest compatibility</li>
-              <li>📁 Unity scene setup</li>
+              <li>🛠️ PC + Quest compatibility setup</li>
+              <li>📁 Complete Unity scene ready to upload</li>
             </ul>
-            <div class="price">20€</div>
             <button onclick="openForm('Premium Pack')" class="btn">
               Order Now
             </button>
           </div>
 
-          <!-- ULTIMATE -->
           <div class="pricing-card ultimate">
             <h3>Ultimate Pack</h3>
-            <p>
-              ✨ Includes everything from Premium Pack + FX and expressions.
-            </p>
+            <div class="price">30€</div>
+            <p>Maximum expression with FX and custom toggles.</p>
             <ul>
               <li>🕒 1-2 week delivery</li>
               <li>🎞️ FX (Audiolink, Emission, Particles)</li>
-              <li>🎵 Emotes, toggles, and sound setup</li>
+              <li>🎵 Custom emotes, toggles, and sound setup</li>
             </ul>
-            <div class="price">30€</div>
             <button onclick="openForm('Ultimate Pack')" class="btn">
               Order Now
             </button>
           </div>
-          <!-- CELESTIAL -->
+
           <div class="pricing-card celestial">
             <div class="celestial-effects">
               <div class="star-field"></div>
             </div>
             <h3>🌌 Celestial Pack</h3>
-            <p>✨ Everything from Ultimate + cinematic polish</p>
+            <div class="price">40€+</div>
+            <p>Everything from Ultimate + cinematic polish.</p>
             <ul>
               <li>⏳ 2+ weeks delivery</li>
-              <li>
-                🌈 All requested features + custom Blender models (no clothes)
-              </li>
-              <li>🎬 Promo video & social media (on request)</li>
+              <li>🌈 Custom Blender modeling (props/accessories)</li>
+              <li>🎬 Promo video & social media spotlight</li>
             </ul>
-            <div class="price">40€+</div>
             <button onclick="openForm('Celestial Pack')" class="btn">
               Order Now
             </button>
@@ -165,24 +173,19 @@
         asked to confirm this before final submission.
       </div>
 
-      <!-- ORDER FORM -->
       <section class="form-container" style="display: none">
-        <h2>📝 Commission Request</h2>
+        <div class="section-title">📝 Commission Request</div>
+
         <form id="order-form" onsubmit="submitForm(event)">
-          <!-- USEFUL LINKS -->
-          <br />
           <div class="useful-links-box">
-            <h3>🔗 Useful Resources</h3>
-            <p>
-              Need help designing or referencing your avatar? Here are some
-              useful links <b>(All website links are free to use)</b>:
-            </p>
+            <h3>🔗 Useful Resources (Free)</h3>
+            <p>Need help finding references? Try these tools:</p>
             <ul>
               <li>
                 <a
                   href="https://meiker.io/play/12013/online.html"
                   target="_blank"
-                  >🐾 Furry Reference Sheet Maker</a
+                  >🐾 Reference Sheet Maker</a
                 >
               </li>
               <li>
@@ -192,36 +195,21 @@
               </li>
               <li>
                 <a href="https://coolors.co/" target="_blank"
-                  >🌈 Coolors.co (color scheme generator)</a
-                >
-              </li>
-              <li>
-                <a href="https://colorhunt.co/" target="_blank"
-                  >🌈 Colorhunt (color palette)</a
-                >
-              </li>
-              <li>
-                <a href="https://www.pinterest.com/" target="_blank"
-                  >📌 Pinterest (mood boards & inspiration)</a
-                >
-              </li>
-              <li>
-                <a href="https://www.bing.com/images/create" target="_blank"
-                  >🤖 Bing Image Creator (free AI art)</a
+                  >🌈 Coolors (Color Schemes)</a
                 >
               </li>
               <li>
                 <a href="https://vroid.com/en/studio" target="_blank"
-                  >👤 VRoid Studio (3D avatar creator)</a
+                  >👤 VRoid Studio (3D)</a
+                >
+              </li>
+              <li>
+                <a href="https://www.pinterest.com/" target="_blank"
+                  >📌 Pinterest Ideas</a
                 >
               </li>
             </ul>
-            <p class="note">
-              These tools can help you prepare references before submitting your
-              commission!
-            </p>
           </div>
-          <!-- END USEFUL LINKS -->
 
           <label for="name">Character Name</label>
           <input
@@ -237,11 +225,11 @@
           <textarea
             id="description"
             name="description"
-            rows="4"
+            rows="5"
             minlength="30"
             maxlength="500"
             required
-            placeholder="Personality, color scheme, key details..."
+            placeholder="Describe personality, colors, specific markings, eye color..."
           ></textarea>
 
           <label for="style">Avatar Base</label>
@@ -269,12 +257,12 @@
               id="custom-base"
               name="custom-base"
               pattern=".{3,}"
-              placeholder="Custom base name"
+              placeholder="Enter the name of the base"
             />
           </div>
 
           <div id="clothing-options" class="hidden">
-            <label for="clothing">Clothing Options</label>
+            <label for="clothing">Clothing Amount</label>
             <select id="clothing" name="clothing">
               <option value="None">None</option>
               <option value="2 Clothes">2 Pieces</option>
@@ -284,7 +272,7 @@
             </select>
           </div>
 
-          <label for="file">Upload Reference Images (up to 5)</label>
+          <label for="file">Reference Images (Max 5)</label>
           <div class="file-upload-wrapper">
             <input
               type="file"
@@ -293,54 +281,59 @@
               accept="image/*"
               multiple
             />
-            <label for="file" class="btn upload-btn">Choose Images</label>
-            <span id="file-name" class="file-name">No files chosen</span>
+            <label for="file" class="upload-btn">📁 Choose Images</label>
+            <div id="file-name" class="file-name">No files selected</div>
           </div>
 
           <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
-            <h4>Preview:</h4>
+            <h4>Selected Previews:</h4>
             <div id="image-preview" class="image-preview-list"></div>
-            <label class="checkbox-wrapper">
+
+            <div class="checkbox-wrapper">
               <input
                 type="checkbox"
                 id="preview-confirm"
                 name="preview-confirm"
               />
-              I confirm these image previews are correct and I want to proceed.
-            </label>
+              <label for="preview-confirm" style="display: inline; margin: 0"
+                >I confirm these images are correct.</label
+              >
+            </div>
           </div>
 
-          <label for="discord-id">Your Discord Username</label>
+          <label for="discord-id">Discord Username</label>
           <input
             type="text"
             id="discord-id"
             name="discord-id"
             required
-            pattern="^.{3,32}(#[0-9]{4})?$"
-            placeholder="Example: Mystic#1234 / Mystic"
+            placeholder="e.g. Mystic#1234 or mystic"
           />
 
           <input type="hidden" id="selected-pack" name="pack" />
 
-          <label>
+          <div class="checkbox-wrapper">
             <input type="checkbox" id="accept-tos" name="accept-tos" required />
-            I agree to the
-            <a href="Pages/tos.html" target="_blank">Terms of Service</a>.
-          </label>
+            <label for="accept-tos" style="display: inline; margin: 0">
+              I agree to the
+              <a href="Pages/tos.html" target="_blank">Terms of Service</a>.
+            </label>
+          </div>
 
           <div class="notice">
             ⚠️ <strong>All sales are final.</strong> Refunds only as stated in
             the ToS.
           </div>
 
-          <button type="submit" class="btn submit">Submit Order</button>
-          <button class="cancel-btn" onclick="cancelOrder()">
-            Cancel Order
-          </button>
+          <div style="margin-top: 25px">
+            <button type="submit" class="btn submit">Submit Order</button>
+            <button type="button" class="cancel-btn" onclick="cancelOrder()">
+              Cancel
+            </button>
+          </div>
         </form>
       </section>
 
-      <!-- FOOTER -->
       <footer>
         <h3>Connect With Me</h3>
         <ul class="social-links">
@@ -356,45 +349,50 @@
       </footer>
     </main>
 
-    <!-- Overlay when commissions close -->
     <div id="overlay-closed" class="hidden">
       <div class="overlay-content">
-        ❌ <strong>Commissions Closed for Summer</strong><br /><br />
-        🔓 Reopens in: <strong id="overlay-timer">Calculating...</strong>
+        <h3>❌ Commissions Closed for Summer</h3>
+        <p>🔓 Reopens in: <strong id="overlay-timer">Calculating...</strong></p>
+      </div>
+    </div>
+
+    <div id="submission-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h3>⏳ Submitting...</h3>
+        <p>Please wait, this can take up to a minute.</p>
+      </div>
+    </div>
+
+    <div id="submission-success" class="overlay hidden">
+      <div class="overlay-content">
+        <h3>✅ Submission Successful!</h3>
+        <p>Thank you! I’ll reach out via Discord as soon as possible.</p>
+        <button class="btn" onclick="closeSuccess()" style="margin-top: 20px">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <div id="custom-modal" class="overlay hidden">
+      <div class="overlay-content">
+        <div id="modal-message">⚠️ Default message</div>
+        <div
+          id="modal-buttons"
+          style="
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+          "
+        >
+          <button class="btn" id="modal-confirm">OK</button>
+          <button class="btn hidden" id="modal-cancel">Cancel</button>
+        </div>
       </div>
     </div>
 
     <script src="Scripts/script.js" defer></script>
     <script src="Scripts/handler.js" defer></script>
     <div class="version" id="versionDisplay"></div>
-
-    <!-- Submission overlay -->
-    <div id="submission-overlay" class="overlay hidden">
-      <div class="overlay-content">
-        ⏳ Submitting your commission request... Please wait (Can take up to
-        couple minutes!).
-      </div>
-    </div>
-
-    <!-- Success popup -->
-    <div id="submission-success" class="overlay hidden">
-      <div class="overlay-content">
-        ✅ <strong>Submission Successful!</strong><br /><br />
-        Thank you! I’ll reach out via Discord as soon as possible.
-        <br /><br />
-        <button class="btn" onclick="closeSuccess()">Close</button>
-      </div>
-    </div>
-
-    <!-- Universal Custom Modal -->
-    <div id="custom-modal" class="overlay hidden">
-      <div class="overlay-content">
-        <div id="modal-message">⚠️ Default message</div>
-        <div id="modal-buttons" style="margin-top: 20px">
-          <button class="btn" id="modal-confirm">OK</button>
-          <button class="btn hidden" id="modal-cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
