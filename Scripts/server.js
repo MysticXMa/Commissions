@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const express = require("express");
 const multer = require("multer");
 const axios = require("axios");
@@ -9,100 +8,56 @@ const FormData = require("form-data");
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
-const corsOptions = {
-  origin: "https://commissions-1e9a.onrender.com",
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-app.use(cors(corsOptions));
-
-app.options("/submit", cors(corsOptions));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "Authorization",
+    ],
+  }),
+);
 
-if (!WEBHOOK_URL) {
-  console.error(
-    "❌ DISCORD_WEBHOOK environment variable is missing. Server cannot start."
-  );
-  process.exit(1);
-}
+const WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
 
 app.post("/submit", upload.array("file"), async (req, res) => {
   try {
-    const {
-      name,
-      description,
-      style,
-      clothing,
-      "custom-base": customBase,
-      "discord-id": discordId,
-      pack,
-    } = req.body;
+    const { name, description, style, clothing, pack } = req.body;
+    const discordId = req.body["discord-id"];
+    const customBase = req.body["custom-base"];
 
-    if (!name || !description || !style || !discordId) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
-
-    const baseUsed =
-      style === "Other"
-        ? customBase && customBase.trim() !== ""
-          ? customBase.trim()
-          : "None"
-        : style;
+    const baseUsed = style === "Other" ? customBase || "None" : style;
 
     const formData = new FormData();
-
-    if (req.files && req.files.length > 0) {
-      req.files.forEach((file, index) => {
-        formData.append(`files[${index}]`, file.buffer, {
-          filename: file.originalname,
-          contentType: file.mimetype,
-        });
-      });
-    }
-
     const embeds = [
       {
-        title: "🎨 New VRChat Avatar Commission Request",
+        title: "🎨 New Commission Request",
         color: 0x00ffff,
-        timestamp: new Date().toISOString(),
         fields: [
-          { name: "👤 Character Name", value: `\`${name}\`` },
+          { name: "👤 Name", value: name || "N/A" },
           {
             name: "📝 Description",
-            value:
-              description.length > 1024
-                ? description.substring(0, 1021) + "..."
-                : description,
+            value: (description || "No description").substring(0, 1024),
           },
-          { name: "🧍 Avatar Base", value: `\`${baseUsed}\``, inline: true },
-          {
-            name: "🧢 Clothing",
-            value: clothing ? `\`${clothing}\`` : "*Not specified*",
-            inline: true,
-          },
-          {
-            name: "📦 Selected Pack",
-            value: pack ? `\`${pack}\`` : "*Not selected*",
-            inline: true,
-          },
-          { name: "🆔 Discord ID", value: `\`${discordId}\`` },
+          { name: "🧍 Base", value: baseUsed, inline: true },
+          { name: "📦 Pack", value: pack || "Basic", inline: true },
+          { name: "🆔 Discord", value: discordId || "Unknown" },
         ],
       },
     ];
 
     if (req.files && req.files.length > 0) {
-      req.files.forEach((file, index) => {
-        embeds.push({
-          title: `📸 Image ${index + 1}`,
-          color: 0x00ffff,
-          image: {
-            url: `attachment://${file.originalname}`,
-          },
+      req.files.forEach((file, i) => {
+        formData.append(`file${i}`, file.buffer, {
+          filename: file.originalname,
+          contentType: file.mimetype,
         });
       });
     }
@@ -115,10 +70,12 @@ app.post("/submit", upload.array("file"), async (req, res) => {
 
     res.status(200).json({ success: true });
   } catch (err) {
-    console.error("❌ Error in /submit:", err);
-    res.status(500).json({ error: "Failed to submit order." });
+    console.error("Server Error:", err.message);
+    res.status(500).json({ error: "Failed to submit" });
   }
 });
 
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server live on port ${PORT}`);
+});

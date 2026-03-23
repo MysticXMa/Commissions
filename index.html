@@ -96,9 +96,8 @@
             </p>
             <ul>
               <li>🕒 1-day delivery</li>
-              <li>🎨 Basic retexture (flat image)</li>
-              <li>🖼️ PNG/JPG/JPEG preview only</li>
-              <li>🗂️ Organized folder + setup instructions</li>
+              <li>🎨 Basic retexture</li>
+              <li>🖼️ PNG/JPG preview only</li>
             </ul>
             <button onclick="openForm('Basic Pack')" class="btn">
               Order Now
@@ -126,8 +125,7 @@
             <ul>
               <li>🕒 2-5 day delivery</li>
               <li>👕 Custom clothing options</li>
-              <li>🛠️ PC + Quest compatibility setup</li>
-              <li>📁 Complete Unity scene ready to upload</li>
+              <li>🛠️ PC + Quest compatibility</li>
             </ul>
             <button onclick="openForm('Premium Pack')" class="btn">
               Order Now
@@ -141,7 +139,7 @@
             <ul>
               <li>🕒 1-2 week delivery</li>
               <li>🎞️ FX (Audiolink, Emission, Particles)</li>
-              <li>🎵 Custom emotes, toggles, and sound setup</li>
+              <li>🎵 Custom emotes & toggles</li>
             </ul>
             <button onclick="openForm('Ultimate Pack')" class="btn">
               Order Now
@@ -157,8 +155,8 @@
             <p>Everything from Ultimate + cinematic polish.</p>
             <ul>
               <li>⏳ 2+ weeks delivery</li>
-              <li>🌈 Custom Blender modeling (props/accessories)</li>
-              <li>🎬 Promo video & social media spotlight</li>
+              <li>🌈 Custom Blender modeling</li>
+              <li>🎬 Promo video spotlight</li>
             </ul>
             <button onclick="openForm('Celestial Pack')" class="btn">
               Order Now
@@ -169,48 +167,13 @@
 
       <div id="premium-warning" class="warning hidden">
         ⚠️ <strong>Important:</strong> You're ordering a high-tier commission.
-        Please ensure you truly need everything included in this pack. You’ll be
-        asked to confirm this before final submission.
+        Please ensure you truly need everything included in this pack.
       </div>
 
       <section class="form-container" style="display: none">
-        <div class="section-title">📝 Commission Request</div>
+        <div class="section-title" id="form-title">📝 Commission Request</div>
 
         <form id="order-form" onsubmit="submitForm(event)">
-          <div class="useful-links-box">
-            <h3>🔗 Useful Resources (Free)</h3>
-            <p>Need help finding references? Try these tools:</p>
-            <ul>
-              <li>
-                <a
-                  href="https://meiker.io/play/12013/online.html"
-                  target="_blank"
-                  >🐾 Reference Sheet Maker</a
-                >
-              </li>
-              <li>
-                <a href="https://picrew.me/" target="_blank"
-                  >🎨 Picrew Avatar Maker</a
-                >
-              </li>
-              <li>
-                <a href="https://coolors.co/" target="_blank"
-                  >🌈 Coolors (Color Schemes)</a
-                >
-              </li>
-              <li>
-                <a href="https://vroid.com/en/studio" target="_blank"
-                  >👤 VRoid Studio (3D)</a
-                >
-              </li>
-              <li>
-                <a href="https://www.pinterest.com/" target="_blank"
-                  >📌 Pinterest Ideas</a
-                >
-              </li>
-            </ul>
-          </div>
-
           <label for="name">Character Name</label>
           <input
             type="text"
@@ -229,7 +192,7 @@
             minlength="30"
             maxlength="500"
             required
-            placeholder="Describe personality, colors, specific markings, eye color..."
+            placeholder="Describe personality, colors, specific markings..."
           ></textarea>
 
           <label for="style">Avatar Base</label>
@@ -246,7 +209,7 @@
             <option value="Mayu">Mayu</option>
             <option value="Rexouium">Rexouium</option>
             <option value="Taidum">Taidum</option>
-            <option value="Reg3.0">Regulus 3.0 (Mayu X Regulus)</option>
+            <option value="Regulus 3.0">Regulus 3.0</option>
             <option value="Other">Other (Type Below)</option>
           </select>
 
@@ -256,7 +219,6 @@
               type="text"
               id="custom-base"
               name="custom-base"
-              pattern=".{3,}"
               placeholder="Enter the name of the base"
             />
           </div>
@@ -265,10 +227,10 @@
             <label for="clothing">Clothing Amount</label>
             <select id="clothing" name="clothing">
               <option value="None">None</option>
-              <option value="2 Clothes">2 Pieces</option>
-              <option value="3 Clothes">3 Pieces</option>
-              <option value="4 Clothes">4 Pieces</option>
-              <option value="5+ Clothes">5+ Pieces</option>
+              <option value="2 Pieces">2 Pieces</option>
+              <option value="3 Pieces">3 Pieces</option>
+              <option value="4 Pieces">4 Pieces</option>
+              <option value="5+ Pieces">5+ Pieces</option>
             </select>
           </div>
 
@@ -288,14 +250,9 @@
           <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
             <h4>Selected Previews:</h4>
             <div id="image-preview" class="image-preview-list"></div>
-
             <div class="checkbox-wrapper">
-              <input
-                type="checkbox"
-                id="preview-confirm"
-                name="preview-confirm"
-              />
-              <label for="preview-confirm" style="display: inline; margin: 0"
+              <input type="checkbox" id="preview-confirm" />
+              <label for="preview-confirm"
                 >I confirm these images are correct.</label
               >
             </div>
@@ -307,23 +264,21 @@
             id="discord-id"
             name="discord-id"
             required
-            placeholder="e.g. Mystic#1234 or mystic"
+            placeholder="e.g. mystic_user"
           />
 
           <input type="hidden" id="selected-pack" name="pack" />
 
           <div class="checkbox-wrapper">
             <input type="checkbox" id="accept-tos" name="accept-tos" required />
-            <label for="accept-tos" style="display: inline; margin: 0">
-              I agree to the
-              <a href="Pages/tos.html" target="_blank">Terms of Service</a>.
-            </label>
+            <label for="accept-tos"
+              >I agree to the
+              <a href="Pages/tos.html" target="_blank">Terms of Service</a
+              >.</label
+            >
           </div>
 
-          <div class="notice">
-            ⚠️ <strong>All sales are final.</strong> Refunds only as stated in
-            the ToS.
-          </div>
+          <div class="notice">⚠️ <strong>All sales are final.</strong></div>
 
           <div style="margin-top: 25px">
             <button type="submit" class="btn submit">Submit Order</button>
@@ -349,13 +304,6 @@
       </footer>
     </main>
 
-    <div id="overlay-closed" class="hidden">
-      <div class="overlay-content">
-        <h3>❌ Commissions Closed for Summer</h3>
-        <p>🔓 Reopens in: <strong id="overlay-timer">Calculating...</strong></p>
-      </div>
-    </div>
-
     <div id="submission-overlay" class="overlay hidden">
       <div class="overlay-content">
         <h3>⏳ Submitting...</h3>
@@ -375,9 +323,8 @@
 
     <div id="custom-modal" class="overlay hidden">
       <div class="overlay-content">
-        <div id="modal-message">⚠️ Default message</div>
+        <div id="modal-message">⚠️ Message</div>
         <div
-          id="modal-buttons"
           style="
             margin-top: 20px;
             display: flex;
@@ -393,6 +340,5 @@
 
     <script src="Scripts/script.js" defer></script>
     <script src="Scripts/handler.js" defer></script>
-    <div class="version" id="versionDisplay"></div>
   </body>
 </html>

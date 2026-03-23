@@ -14,7 +14,7 @@ if (fileInput) {
       const maxAllowed = 5;
       const filesToAdd = [...fileInput.files].slice(
         0,
-        maxAllowed - currentCount
+        maxAllowed - currentCount,
       );
 
       filesToAdd.forEach((file) => selectedFiles.push(file));
@@ -131,55 +131,60 @@ function openForm(packName) {
   });
 }
 
+const badWords = [
+  "shit",
+  "fuck",
+  "bitch",
+  "asshole",
+  "damn",
+  "hell",
+  "bastard",
+  "slut",
+  "whore",
+  "dick",
+  "cock",
+  "pussy",
+  "cunt",
+  "motherfucker",
+  "fag",
+  "nigger",
+  "retard",
+  "rape",
+  "porn",
+];
+
+const containsBadWords = (text) => {
+  if (!text) return false;
+  const cleanText = text.toLowerCase().replace(/[^\w\s]/gi, "");
+  return badWords.some((word) =>
+    new RegExp(`\\b${word}\\b`, "i").test(cleanText),
+  );
+};
+
 async function submitForm(event) {
   event.preventDefault();
 
   const form = document.getElementById("order-form");
   const formData = new FormData(form);
 
-  const description = formData.get("description");
   const name = formData.get("name");
+  const description = formData.get("description");
   const style = formData.get("style");
   const clothing = formData.get("clothing") || "None";
   const discordId = formData.get("discord-id");
   const pack = formData.get("pack");
+  const customBase = formData.get("custom-base");
 
-  let baseToSend = style;
-  if (style === "Other") {
-    const customBaseInput = document.getElementById("custom-base").value.trim();
-    baseToSend = customBaseInput !== "" ? customBaseInput : "None";
-  }
-
-  const curseWords = [
-    "shit",
-    "fuck",
-    "bitch",
-    "asshole",
-    "damn",
-    "hell",
-    "bastard",
-    "slut",
-    "whore",
-    "dick",
-    "cock",
-    "pussy",
-    "cunt",
-    "motherfucker",
-  ];
   const urlPattern = /(https?:\/\/[^\s]+)/g;
-  const isInappropriate = (text) =>
+  const isInvalid = (text) =>
     urlPattern.test(text) ||
-    curseWords.some((word) => new RegExp(`\\b${word}\\b`, "i").test(text)) ||
-    text.includes("@");
+    containsBadWords(text) ||
+    (text && text.includes("@"));
 
-  if (
-    isInappropriate(description) ||
-    isInappropriate(name) ||
-    isInappropriate(discordId)
-  ) {
+  if (isInvalid(description) || isInvalid(name) || isInvalid(discordId)) {
     await showModal({
       message:
-        "🚫 Inappropriate content detected. Please remove any profanity or links.",
+        "🚫 Inappropriate content or links detected. Please revise your entry.",
       confirmText: "Understood",
     });
     return;
@@ -194,27 +199,17 @@ async function submitForm(event) {
     return;
   }
 
-  const highTierPacks = ["Ultimate Pack", "Celestial Pack"];
-  if (highTierPacks.includes(pack)) {
-    const confirm = await showModal({
-      message: `⚠️ You are ordering a high-tier commission with advanced features.\nAre you sure you want to continue?`,
-      confirmText: "Yes, continue",
-      cancelText: "Cancel",
-    });
-
-    if (!confirm) return;
-  }
-
   document.querySelector(".submit").disabled = true;
   document.getElementById("submission-overlay").classList.remove("hidden");
 
   const submission = new FormData();
   submission.append("name", name);
   submission.append("description", description);
-  submission.append("style", baseToSend);
+  submission.append("style", style);
   submission.append("clothing", clothing);
   submission.append("discord-id", discordId);
   submission.append("pack", pack);
+  if (customBase) submission.append("custom-base", customBase);
 
   if (selectedFiles.length > 0) {
     selectedFiles.forEach((file) => {
@@ -228,23 +223,22 @@ async function submitForm(event) {
       body: submission,
     });
 
-    if (!res.ok) throw new Error("Server responded with error");
+    console.log("Response Status:", res.status);
+
+    if (!res.ok) throw new Error();
 
     form.reset();
     selectedFiles = [];
     document.getElementById("image-preview-wrapper").classList.add("hidden");
     document.querySelector(".form-container").style.display = "none";
-    document.getElementById("premium-warning").classList.add("hidden");
     document.getElementById("submission-overlay").classList.add("hidden");
     document.getElementById("submission-success").classList.remove("hidden");
   } catch (error) {
     document.getElementById("submission-overlay").classList.add("hidden");
     await showModal({
-      message:
-        "❌ An error occurred while submitting your order. Please try again later.",
+      message: "❌ Submission failed. Please try again.",
       confirmText: "Okay",
     });
-    console.error("Error:", error);
   } finally {
     document.querySelector(".submit").disabled = false;
   }
